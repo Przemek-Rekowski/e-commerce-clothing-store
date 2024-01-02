@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "n845MaHjDT1RIHZ7vRgfABmN4xdJ7pTCOvfcWizVCpD02XmNgO2LOerFaG1WNtDc2BBbIuPSRavN+XoSIsXpIg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Komp\\source\\repos\\EcommerceShop\\Application\\Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Komp\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Komp\\.nuget\\packages\\mediatr\\12.2.0\\mediatr.12.2.0.nupkg.sha512",
+    "C:\\Users\\Komp\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\Komp\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\Komp\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

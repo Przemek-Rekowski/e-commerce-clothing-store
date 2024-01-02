@@ -1,0 +1,7 @@
+C:\Users\Komp\source\repos\EcommerceShop\API\obj\Debug\net8.0\API.csproj.AssemblyReference.cache
+C:\Users\Komp\source\repos\EcommerceShop\API\obj\Debug\net8.0\API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Komp\source\repos\EcommerceShop\API\obj\Debug\net8.0\API.AssemblyInfoInputs.cache
+C:\Users\Komp\source\repos\EcommerceShop\API\obj\Debug\net8.0\API.AssemblyInfo.cs
+C:\Users\Komp\source\repos\EcommerceShop\API\obj\Debug\net8.0\API.csproj.CoreCompileInputs.cache
+C:\Users\Komp\source\repos\EcommerceShop\API\obj\Debug\net8.0\API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Komp\source\repos\EcommerceShop\API\obj\Debug\net8.0\API.MvcApplicationPartsAssemblyInfo.cache
