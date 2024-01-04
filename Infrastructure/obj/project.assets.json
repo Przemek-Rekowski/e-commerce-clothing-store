@@ -2704,6 +2704,9 @@
           "projectReferences": {
             "C:\\Users\\Komp\\source\\repos\\Domain\\Domain.csproj": {
               "projectPath": "C:\\Users\\Komp\\source\\repos\\Domain\\Domain.csproj"
+            },
+            "C:\\Users\\Komp\\source\\repos\\EcommerceShop\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\Komp\\source\\repos\\EcommerceShop\\Domain\\Domain.csproj"
             }
           }
         }

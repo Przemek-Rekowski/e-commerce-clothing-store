@@ -19,7 +19,6 @@ namespace ProductAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateProductCommand command)
         {
-
             await _mediator.Send(command);
             return Ok();
         }

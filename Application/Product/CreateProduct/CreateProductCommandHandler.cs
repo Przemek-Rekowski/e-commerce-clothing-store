@@ -1,12 +1,9 @@
 ﻿using Application.Product.CreateProduct;
 using AutoMapper;
-using Domain.Entities;
 using Domain.Interfaces;
 using MediatR;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace Application.Product.Commands.CreateProduct
+namespace EcommerceShop.Application.Product.Command.CreateProduct
 {
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, Unit>
     {
@@ -18,7 +15,6 @@ namespace Application.Product.Commands.CreateProduct
             _productRepository = productRepository;
             _mapper = mapper;
         }
-
         public async Task<Unit> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
             var product = _mapper.Map<Domain.Entities.Product>(request);
