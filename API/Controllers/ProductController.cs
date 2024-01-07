@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Application.Product;
 using CarWorkshop.Application.CarWorkshop.Queries.GetAllCarWorkshops;
+using Product.Application.Product.GetProductById;
 
 namespace ProductAPI.Controllers
 {
@@ -31,6 +32,14 @@ namespace ProductAPI.Controllers
         {
             var carWorkshops = _mediator.Send(new GetAllProductsQuery());
             return Ok(carWorkshops);
+        }
+
+        [HttpGet]
+        [Route("product/{id})")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var dto = await _mediator.Send(new GetProductByIdQuery(id));
+            return Ok(dto);
         }
     }
 }
