@@ -15,6 +15,7 @@ namespace EcommerceShop.Infrastructure.Extensions
             services.AddDbContext<EcommerceShopDbContext>(options => options.UseSqlServer(
                 configuration.GetConnectionString("EcommerceShop")));
 
+            var cn = configuration.GetConnectionString("EcommerceShop");
 
             services.AddScoped<IProductRepository, ProductRepository>();
         }

@@ -1,6 +1,9 @@
 ﻿using Application.Product.CreateProduct;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Application.Product;
+using CarWorkshop.Application.CarWorkshop.Queries.GetAllCarWorkshops;
 
 namespace ProductAPI.Controllers
 {
@@ -21,6 +24,13 @@ namespace ProductAPI.Controllers
         {
             await _mediator.Send(command);
             return Ok();
+        }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<ProductDto>> GetAll()
+        {
+            var carWorkshops = _mediator.Send(new GetAllProductsQuery());
+            return Ok(carWorkshops);
         }
     }
 }

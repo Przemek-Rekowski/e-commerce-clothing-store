@@ -1,9 +1,12 @@
 using Application.Extentions;
+using Azure.Identity;
 using EcommerceShop.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+
 
 builder.Services.AddControllers();
 
