@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.Product;
+using MediatR;
 
-namespace Application.Product.GetProductById
+namespace Product.Application.Product.GetProductById
 {
-    internal class GetProductByIdQuery
+    public class GetProductByIdQuery : IRequest<ProductDto>
     {
+        public int Id { get; set; }
+
+        public GetProductByIdQuery(int id)
+        {
+            Id = id;
+        }
     }
 }
