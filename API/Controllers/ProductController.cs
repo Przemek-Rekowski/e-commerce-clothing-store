@@ -37,7 +37,7 @@ namespace ProductAPI.Controllers
 
         [HttpGet]
         [Route("product/{id})")]
-        public async Task<IActionResult> GetById([FromRoute]int id)
+        public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var dto = await _mediator.Send(new GetProductByIdQuery(id));
             return Ok(dto);
@@ -49,6 +49,14 @@ namespace ProductAPI.Controllers
         {
             await _mediator.Send(command);
             return Ok();
+        }
+
+        [HttpDelete]
+        [Route("product/{id}/delete")]
+        public async Task<IActionResult> Delete([FromRoute] int id)
+        {
+            var dto = await _mediator.Send(new GetProductByIdQuery(id));
+            return Ok(dto);
         }
     }
 }

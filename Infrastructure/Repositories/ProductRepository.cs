@@ -22,18 +22,18 @@ internal class ProductRepository : IProductRepository
         await _dbContext.SaveChangesAsync();
     }
 
-    public Task Delete(int id)
+    public async Task Delete(Product product)
     {
-        throw new NotImplementedException();
+        _dbContext.Products.Remove(product);
+
+        await _dbContext.SaveChangesAsync();
     }
 
     public async Task<IEnumerable<Product>> GetAll()
         => await _dbContext.Products.ToListAsync();
 
-    public Task<Product> GetById(int id)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<Product?> GetById(int id)
+                => await _dbContext.Products.FirstOrDefaultAsync(p => p.Id == id);
 
     public Task<Product?> GetByName(string name)
      => _dbContext.Products.FirstOrDefaultAsync(cw => cw.Name.ToLower() == name.ToLower());
