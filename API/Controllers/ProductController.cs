@@ -6,6 +6,7 @@ using Application.Product;
 using CarWorkshop.Application.CarWorkshop.Queries.GetAllCarWorkshops;
 using Product.Application.Product.GetProductById;
 using EcommerceShop.Application.Product.UpdateProduct;
+using EcommerceShop.Application.Product.DeleteProduct;
 
 namespace ProductAPI.Controllers
 {
@@ -31,8 +32,8 @@ namespace ProductAPI.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<ProductDto>> GetAll()
         {
-            var carWorkshops = _mediator.Send(new GetAllProductsQuery());
-            return Ok(carWorkshops);
+            var products = _mediator.Send(new GetAllProductsQuery());
+            return Ok(products);
         }
 
         [HttpGet]
@@ -55,7 +56,7 @@ namespace ProductAPI.Controllers
         [Route("product/{id}/delete")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var dto = await _mediator.Send(new GetProductByIdQuery(id));
+            var dto = await _mediator.Send(new DeleteProductCommand(id));
             return Ok(dto);
         }
     }

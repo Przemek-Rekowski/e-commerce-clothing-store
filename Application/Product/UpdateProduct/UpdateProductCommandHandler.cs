@@ -17,13 +17,13 @@ namespace Product.Application.Product.Commands.EditProduct
 
         public async Task<Unit> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
-            var product = await _repository.GetById(request.Id);
+            /*var product = await _repository.GetById(request.Id);
 
             product.Name = request.Name;
             product.Description = request.Description;
             product.Price = request.Price;
 
-            await _repository.Commit();
+            await _repository.Commit();*/
 
             return Unit.Value;
         }

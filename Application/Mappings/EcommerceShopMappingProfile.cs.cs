@@ -1,5 +1,4 @@
 ﻿using Application.Product;
-using Domain.Entities;
 using AutoMapper;
 
 
@@ -9,8 +8,8 @@ namespace Application.Mappings
     {
         public EcommerceShopMappingProfile()
         {
-            CreateMap<Domain.Entities.Product, ProductDto>()
-                .ForMember(dto => dto.IsAvaliable, opt => opt.MapFrom(src => true));
+            CreateMap<Domain.Entities.Product, ProductDto>();
+            CreateMap<ProductDto, Domain.Entities.Product>();
         }
     }
 }
