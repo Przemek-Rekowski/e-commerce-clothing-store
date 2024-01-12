@@ -30,14 +30,14 @@ namespace ProductAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<ProductDto>> GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var products = _mediator.Send(new GetAllProductsQuery());
+            var products = await _mediator.Send(new GetAllProductsQuery());
             return Ok(products);
         }
 
         [HttpGet]
-        [Route("product/{id})")]
+        [Route("product/{id}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var dto = await _mediator.Send(new GetProductByIdQuery(id));
@@ -46,8 +46,9 @@ namespace ProductAPI.Controllers
 
         [HttpPost]
         [Route("product/{id}/edit")]
-        public async Task<IActionResult> Update([FromBody] UpdateProductCommand command)
+        public async Task<IActionResult> Update([FromBody] UpdateProductCommand command, [FromRoute] int id)
         {
+            command.Id = id;
             await _mediator.Send(command);
             return Ok();
         }
