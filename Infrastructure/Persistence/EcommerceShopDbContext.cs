@@ -11,10 +11,12 @@ namespace Infrastructure.Persistence
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Inventory> Inventories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Inventory>().HasNoKey();
         }
     }
 }

@@ -4,7 +4,7 @@ namespace Domain.Interfaces
 {
     public interface IProductRepository
     {
-        Task Create(Product carWorkshop);
+        Task Create(Product product);
         Task<IEnumerable<Product>> GetAll();
         Task<Product> GetById(int id);
         Task Delete(Product product);

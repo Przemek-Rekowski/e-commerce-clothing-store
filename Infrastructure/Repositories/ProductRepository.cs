@@ -16,9 +16,9 @@ internal class ProductRepository : IProductRepository
     public Task Commit()
      => _dbContext.SaveChangesAsync();
 
-    public async Task Create(Product carWorkshop)
+    public async Task Create(Product product)
     {
-        _dbContext.Add(carWorkshop);
+        _dbContext.Add(product);
         await _dbContext.SaveChangesAsync();
     }
 
@@ -34,7 +34,4 @@ internal class ProductRepository : IProductRepository
 
     public async Task<Product?> GetById(int id)
                 => await _dbContext.Products.FirstOrDefaultAsync(p => p.Id == id);
-
-    public Task<Product?> GetByName(string name)
-     => _dbContext.Products.FirstOrDefaultAsync(cw => cw.Name.ToLower() == name.ToLower());
 }
