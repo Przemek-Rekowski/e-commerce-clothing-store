@@ -3,7 +3,7 @@ using AutoMapper;
 using Domain.Interfaces;
 using MediatR;
 
-namespace EcommerceShop.Application.Product.Command.CreateProduct
+namespace EcommerceShop.Application.Product.CreateProduct
 {
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, Unit>
     {

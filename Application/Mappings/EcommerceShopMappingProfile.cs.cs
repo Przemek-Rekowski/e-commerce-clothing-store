@@ -1,4 +1,5 @@
-﻿using Application.Product;
+﻿using Application.Inventory.Dtos;
+using Application.Product.Dtos;
 using AutoMapper;
 
 
@@ -10,6 +11,9 @@ namespace Application.Mappings
         {
             CreateMap<Domain.Entities.Product, ProductDto>();
             CreateMap<ProductDto, Domain.Entities.Product>();
+
+            CreateMap<Domain.Entities.Inventory, InventoryDto>();
+            CreateMap<InventoryDto, Domain.Entities.Inventory>();
         }
     }
 }

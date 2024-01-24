@@ -4,7 +4,6 @@ using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories;
-
 internal class InventoryRepository : IInventoryRepository
 {
     private readonly EcommerceShopDbContext _dbContext;
@@ -27,7 +26,6 @@ internal class InventoryRepository : IInventoryRepository
         await _dbContext.SaveChangesAsync();
     }
 
-    public async Task<Inventory?> GetByProduct(int id)
-                => await _dbContext.Inventories.FirstOrDefaultAsync(i => i.ProductId == id);
+    public async Task<Inventory?> GetByProduct(int productId)
+        => await _dbContext.Inventories.FirstOrDefaultAsync(i => i.ProductId == productId);
 }
-

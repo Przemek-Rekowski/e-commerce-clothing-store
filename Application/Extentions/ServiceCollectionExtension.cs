@@ -1,23 +1,22 @@
-﻿using Application.Mappings;
-using Application.Product.CreateProduct;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
+using Application.Mappings;
 
-namespace Application.Extentions
+namespace EcommerceShop.Application.Extensions
 {
     public static class ServiceCollectionExtension
     {
         public static void AddApplication(this IServiceCollection services)
         {
-            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            // Register MediatR and other services
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
 
+            // Register AutoMapper
             services.AddScoped(provider => new MapperConfiguration(cfg =>
             {
                 var scope = provider.CreateScope();
                 cfg.AddProfile(new EcommerceShopMappingProfile());
-            }).CreateMapper()
-        );
+            }).CreateMapper());
         }
     }
 }

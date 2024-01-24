@@ -7,6 +7,7 @@ using CarWorkshop.Application.CarWorkshop.Queries.GetAllCarWorkshops;
 using Product.Application.Product.GetProductById;
 using EcommerceShop.Application.Product.UpdateProduct;
 using EcommerceShop.Application.Product.DeleteProduct;
+using Application.Inventory.CreateInventory;
 
 namespace ProductAPI.Controllers
 {

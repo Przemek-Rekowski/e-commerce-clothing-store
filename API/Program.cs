@@ -1,5 +1,4 @@
-using Application.Extentions;
-using Azure.Identity;
+using EcommerceShop.Application.Extensions;
 using EcommerceShop.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
