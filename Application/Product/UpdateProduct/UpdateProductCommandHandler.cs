@@ -4,7 +4,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Product.Application.Product.Commands.EditProduct
+namespace Product.Application.Product.Commands.UpdateProduct
 {
     internal class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, Unit>
     {
