@@ -1,5 +1,4 @@
-﻿using Application.Product.Dtos;
-using MediatR;
+﻿using MediatR;
 
 namespace Application.Product.CreateProduct
 {

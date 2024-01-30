@@ -1,12 +1,14 @@
 ﻿using Domain.Entities;
 
-namespace Application.Product.Dtos
+namespace Application.Product
 {
-    internal class CreateProductDto
+    public class ProductDto
     {
         public string Name { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }
-        public List<Domain.Entities.Inventory> Inventories { get; set; }
+        public bool IsAvalible { get; set; }
+
+        public List<ProductSize> Size { get; set; }
     }
 }

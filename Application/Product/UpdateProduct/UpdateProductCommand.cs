@@ -1,4 +1,4 @@
-﻿using Application.Product.Dtos;
+﻿using Application.Product;
 using MediatR;
 
 namespace EcommerceShop.Application.Product.UpdateProduct

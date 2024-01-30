@@ -1,6 +1,6 @@
-﻿namespace Application.Inventory.Dtos
+﻿namespace Application.Size.Dtos
 {
-    public class InventoryDto
+    public class SizeDto
     {
         public int ProductId { get; set; }
         public string Size { get; set; }

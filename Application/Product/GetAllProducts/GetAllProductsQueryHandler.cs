@@ -1,4 +1,4 @@
-﻿using Application.Product.Dtos;
+﻿using Application.Product;
 using AutoMapper;
 using CarWorkshop.Application.CarWorkshop.Queries.GetAllCarWorkshops;
 using Domain.Interfaces;
