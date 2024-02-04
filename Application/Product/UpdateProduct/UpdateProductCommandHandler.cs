@@ -21,7 +21,6 @@ namespace Product.Application.Product.Commands.UpdateProduct
 
             product.Name = request.Name;
             product.Description = request.Description;
-            product.Price = request.Price;
 
             await _repository.Commit();
 

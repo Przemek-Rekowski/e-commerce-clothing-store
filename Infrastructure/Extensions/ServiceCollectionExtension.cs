@@ -18,7 +18,6 @@ namespace EcommerceShop.Infrastructure.Extensions
             var cn = configuration.GetConnectionString("EcommerceShop");
 
             services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<ISizeRepository, SizeRepository>();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿using Domain.Entities.Product;
 using Domain.Interfaces;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -24,10 +24,14 @@ internal class ProductRepository : IProductRepository
 
     public async Task Delete(Product product)
     {
+        var itemsToRemove = _dbContext.Items.Where(i => i.ProductId == product.Id).ToList();
+
+        _dbContext.Items.RemoveRange(itemsToRemove);
         _dbContext.Products.Remove(product);
 
         await _dbContext.SaveChangesAsync();
     }
+
 
     public async Task<IEnumerable<Product>> GetAll()
         => await _dbContext.Products.ToListAsync();

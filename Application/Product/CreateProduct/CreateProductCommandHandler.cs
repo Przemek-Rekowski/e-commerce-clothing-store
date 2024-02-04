@@ -17,7 +17,7 @@ namespace EcommerceShop.Application.Product.CreateProduct
         }
         public async Task<Unit> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
-            var product = _mapper.Map<Domain.Entities.Product>(request);
+            var product = _mapper.Map<Domain.Entities.Product.Product>(request);
 
             await _productRepository.Create(product);
 

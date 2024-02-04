@@ -1,4 +1,4 @@
-﻿using Application.Product;
+﻿using Application.Product.Dtos;
 using MediatR;
 
 namespace CarWorkshop.Application.CarWorkshop.Queries.GetAllCarWorkshops

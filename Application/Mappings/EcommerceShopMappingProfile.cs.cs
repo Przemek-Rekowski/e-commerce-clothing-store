@@ -1,6 +1,5 @@
-﻿using Application.Size.Dtos;
-using AutoMapper;
-using Application.Product;
+﻿using AutoMapper;
+using Application.Product.Dtos;
 
 
 namespace Application.Mappings
@@ -9,11 +8,13 @@ namespace Application.Mappings
     {
         public EcommerceShopMappingProfile()
         {
-            CreateMap<Domain.Entities.Product, ProductDto>();
-            CreateMap<ProductDto, Domain.Entities.Product>();
-
-            CreateMap<Domain.Entities.ProductSize, SizeDto>();
-            CreateMap<SizeDto, Domain.Entities.ProductSize>();
+            CreateMap<Domain.Entities.Product.Product, ProductDto>()
+                           .ForMember(dest => dest.SizeDtos, opt => opt.MapFrom(src => src.Items.Select(item => new SizeDto
+                           {
+                               Value = item.Size.Value,
+                               IsAvalible = item.Quantity > 0
+                           })))
+                           .ForMember(dest => dest.IsAvalible, opt => opt.MapFrom(src => src.Items.Any(item => item.Quantity > 0)));
         }
     }
 }

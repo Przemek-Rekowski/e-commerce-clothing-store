@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿using Domain.Entities.Product;
 
 namespace Domain.Interfaces
 {
@@ -6,7 +6,7 @@ namespace Domain.Interfaces
     {
         Task Create(Product product);
         Task<IEnumerable<Product>> GetAll();
-        Task<Product> GetById(int id);
+        Task<Product?> GetById(int id);
         Task Delete(Product product);
         Task Commit();
     }
