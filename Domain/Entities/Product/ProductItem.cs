@@ -9,11 +9,10 @@ namespace Domain.Entities.Product
 {
     public class ProductItem
     {
-        public int Id { get; set; }
+        public string SKU { get; set; } = default!;
         public int ProductId { get; set; }
         public int SizeId { get; set; }
         public int ColorId { get; set; }
-        public string SKU { get; set; } = default!;
         public int Quantity { get; set; }
         public int Price { get; set; }
 

@@ -1,10 +1,10 @@
 ﻿using Application.Product.CreateProduct;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
-using CarWorkshop.Application.CarWorkshop.Queries.GetAllCarWorkshops;
 using Product.Application.Product.GetProductById;
 using EcommerceShop.Application.Product.UpdateProduct;
 using EcommerceShop.Application.Product.DeleteProduct;
+using EcommerceShop.Application.Product.GetAllProducts;
 
 namespace ProductAPI.Controllers
 {

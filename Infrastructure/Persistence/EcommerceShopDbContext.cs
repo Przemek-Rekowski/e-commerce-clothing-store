@@ -19,6 +19,9 @@ namespace Infrastructure.Persistence
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<ProductItem>()
+                .HasKey(pi => pi.SKU);
+
             modelBuilder.Entity<Product>()
                 .HasMany(p => p.Items)
                 .WithOne(pi => pi.Product)

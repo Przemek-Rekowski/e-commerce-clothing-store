@@ -1,12 +1,11 @@
 ﻿using Application.Product.Dtos;
 using AutoMapper;
-using CarWorkshop.Application.CarWorkshop.Queries.GetAllCarWorkshops;
 using Domain.Interfaces;
 using MediatR;
 
 namespace EcommerceShop.Application.Product.GetAllProducts
 {
-    internal class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQuery, IEnumerable<ProductDto>>
+    public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQuery, IEnumerable<ProductDto>>
     {
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;

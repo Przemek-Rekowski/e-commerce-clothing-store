@@ -1,7 +1,7 @@
 ﻿using Application.Product.Dtos;
 using MediatR;
 
-namespace CarWorkshop.Application.CarWorkshop.Queries.GetAllCarWorkshops
+namespace EcommerceShop.Application.Product.GetAllProducts
 {
     public class GetAllProductsQuery : IRequest<IEnumerable<ProductDto>>
     {
