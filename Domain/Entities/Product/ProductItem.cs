@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace Domain.Entities.Product
+﻿namespace Domain.Entities.Product
 {
     public class ProductItem
     {
@@ -16,9 +9,9 @@ namespace Domain.Entities.Product
         public int Quantity { get; set; }
         public int Price { get; set; }
 
-        public Product Product { get; set; }
-        public Size Size { get; set; }
-        public Color Color { get; set; }
+        public Product Product { get; set; } = default!;
+        public Size Size { get; set; } = default!;
+        public Color Color { get; set; } = default!;
 
         public void GenerateSKU() => SKU = $"{ProductId}-{SizeId}-{ColorId}";
     }

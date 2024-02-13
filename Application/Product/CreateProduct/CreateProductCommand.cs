@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Application.Product.CreateProduct
 {
-    public class CreateProductCommand : ProductDto, IRequest<Unit>
+    public class CreateProductCommand : CreateProductDto, IRequest<Unit>
     {
     }
 }

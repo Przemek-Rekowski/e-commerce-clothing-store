@@ -1,4 +1,4 @@
-﻿using EcommerceShop.Application.Item.CreateItem;
+﻿using Application.Item.Dtos;
 using MediatR;
 
 namespace EcommerceShop.Application.Item.GetAllItems

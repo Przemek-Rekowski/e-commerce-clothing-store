@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Application.Product.Dtos
 {
-    public class SizeDto
+    public class CreateProductDto
     {
-        public string Value { get; set; } = default!;
-        public bool IsAvalible { get; set; }
+        public string Name { get; set; } = default!;
+        public string Description { get; set; } = default!;
     }
 }

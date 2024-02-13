@@ -14,9 +14,6 @@ namespace EcommerceShop.Application.Product.CreateProduct
 
             RuleFor(c => c.Description)
                 .NotEmpty().WithMessage("Please enter description");
-
-            RuleFor(c => c.Price)
-                .GreaterThan(0);
         }
     }
 }

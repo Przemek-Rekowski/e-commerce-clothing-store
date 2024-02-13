@@ -1,6 +1,6 @@
-﻿using AutoMapper;
+﻿using Application.Item.Dtos;
+using AutoMapper;
 using Domain.Interfaces;
-using EcommerceShop.Application.Item.CreateItem;
 using MediatR;
 using Product.Application.Product.GetProductById;
 

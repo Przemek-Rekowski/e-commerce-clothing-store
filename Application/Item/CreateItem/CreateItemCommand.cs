@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using Application.Item.Dtos;
+using MediatR;
 
 namespace EcommerceShop.Application.Item.CreateItem
 {
-    public class CreateItemCommand : ItemDto, IRequest<Unit>
+    public class CreateItemCommand : CreateItemDto, IRequest<Unit>
     {
     }
 }

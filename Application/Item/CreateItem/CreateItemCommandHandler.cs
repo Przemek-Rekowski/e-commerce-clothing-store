@@ -1,5 +1,4 @@
-﻿using Application.Product.CreateProduct;
-using AutoMapper;
+﻿using AutoMapper;
 using Domain.Interfaces;
 using MediatR;
 
