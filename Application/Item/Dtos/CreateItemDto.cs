@@ -2,7 +2,7 @@
 {
     public class CreateItemDto
     {
-        public string? SKU { get; set; }
+        public int? SKU { get; set; }
         public int ProductId { get; set; }
         public int SizeId { get; set; }
         public int ColorId { get; set; }
