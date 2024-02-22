@@ -10,6 +10,6 @@ namespace Domain.Entities.Product
     {
         public int Id { get; set; }
         public string Value { get; set; } = default!;
-        public List<ProductItem> Items { get; set; } = new();
+        public virtual List<ProductItem> Items { get; set; } = new();
     }
 }

@@ -14,18 +14,24 @@ namespace Infrastructure.Persistence
         public DbSet<ProductItem> Items { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<Size> Sizes { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<ProductItem>()
-                .HasKey(pi => pi.SKU);
-
             modelBuilder.Entity<Product>()
                 .HasMany(p => p.Items)
                 .WithOne(pi => pi.Product)
                 .HasForeignKey(pi => pi.ProductId);
+
+            modelBuilder.Entity<Product>()
+                .HasOne(p => p.Category)
+                .WithMany(c => c.Products)
+                .HasForeignKey(p => p.CategoryId);
+
+            modelBuilder.Entity<ProductItem>()
+                .HasKey(pi => pi.SKU);
 
             modelBuilder.Entity<ProductItem>()
                 .HasOne(pi => pi.Color)
@@ -46,6 +52,11 @@ namespace Infrastructure.Persistence
                 .HasMany(s => s.Items)
                 .WithOne(pi => pi.Size)
                 .HasForeignKey(pi => pi.SizeId);
+
+            modelBuilder.Entity<Category>()
+                .HasMany(c => c.Products)
+                .WithOne(p => p.Category)
+                .HasForeignKey(p => p.CategoryId);
         }
     }
 }

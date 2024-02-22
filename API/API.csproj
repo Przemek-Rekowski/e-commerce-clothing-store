@@ -8,7 +8,10 @@
     <UserSecretsId>fa54601d-672d-41dd-81b7-05b12feb35ed</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
+
+
+
+	<ItemGroup>
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

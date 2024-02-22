@@ -1,27 +1,38 @@
-﻿using Application.Product.Dtos;
-using AutoMapper;
-using Xunit;
-using Domain.Entities.Product;
+﻿using System.Collections.Generic;
+using Application.Category.Dtos;
 using Application.Item.Dtos;
+using Application.Mappings;
+using Application.Product.Dtos;
+using AutoMapper;
+using Domain.Entities.Product;
+using Xunit;
 
 namespace Application.Mappings.Tests
 {
     public class EcommerceShopMappingProfileTests
     {
+        private IMapper GetMapper()
+        {
+            var configuration = new MapperConfiguration(cfg => cfg.AddProfile(new EcommerceShopMappingProfile()));
+            return configuration.CreateMapper();
+        }
+
         [Fact]
         public void MappingProfile_ShouldMapProductDtoToProductDto()
         {
-            //arrange
-            var configuration = new MapperConfiguration(cfg =>
-                 cfg.AddProfile(new EcommerceShopMappingProfile()));
-
-            var mapper = configuration.CreateMapper();
-
+            // arrange
+            var mapper = GetMapper();
             var product = new Domain.Entities.Product.Product
             {
                 Id = 1,
                 Name = "Test Product",
                 Description = "Test Description",
+                Category = new Domain.Entities.Product.Category
+                {
+                    Id = 1,
+                    ParentId = 2,
+                    Name = "test name",
+                },
                 Items = new List<ProductItem>
                 {
                     new ProductItem { Size = new Size { Value = "S" }, Quantity = 5 },
@@ -29,16 +40,17 @@ namespace Application.Mappings.Tests
                 }
             };
 
-            //act
+            // act
             var productDto = mapper.Map<ProductDto>(product);
 
-            //assert
+            // assert
             Assert.NotNull(productDto);
-            Assert.Equal(product.Name, productDto.Name);
+            Assert.Equal($"{product.Name} {product.Category.Name}", productDto.Name);
             Assert.Equal(product.Description, productDto.Description);
+            Assert.Equal(product.Category.Name, productDto.Category);
 
             Assert.NotNull(productDto.SizeDtos);
-            Assert.Equal(2, productDto.SizeDtos.Count);
+            Assert.Equal(product.Items.Count, productDto.SizeDtos.Count);
 
             Assert.True(productDto.IsAvalible);
         }
@@ -46,77 +58,60 @@ namespace Application.Mappings.Tests
         [Fact]
         public void MappingProfile_ShouldMapCreateProductDtoToProduct()
         {
-            //arrange
-            var configuration = new MapperConfiguration(cfg =>
-                cfg.AddProfile(new EcommerceShopMappingProfile()));
-
-            var mapper = configuration.CreateMapper();
-
+            // arrange
+            var mapper = GetMapper();
             var dto = new CreateProductDto
             {
                 Name = "name",
                 Description = "description",
             };
 
-            //act
+            // act
             var result = mapper.Map<Domain.Entities.Product.Product>(dto);
 
-            //assert
+            // assert
             Assert.NotNull(result);
             Assert.Equal(dto.Name, result.Name);
             Assert.Equal(dto.Description, result.Description);
         }
 
-        [Fact]
-        public void MappingProfile_ShouldMapProductItemToItemDto()
+        [Theory]
+        [InlineData("1-1-1", 1, 100, "name", "L", "red")]
+        [InlineData("2-2-2", 2, 150, "other", "M", "blue")]
+        public void MappingProfile_ShouldMapProductItemToItemDto(string sku, int quantity, int price, string productName, string size, string color)
         {
-            //arrange
-            var configuration = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<ProductItem, ItemDto>()
-                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Product.Name))
-                    .ForMember(dest => dest.Size, opt => opt.MapFrom(src => src.Size.Value))
-                    .ForMember(dest => dest.Color, opt => opt.MapFrom(src => src.Color.Value));
-            });
-
-            var mapper = configuration.CreateMapper();
-
-            //act
+            // arrange
+            var mapper = GetMapper();
             var item = new ProductItem
             {
-                SKU = "1-1-1",
-                Quantity = 1,
-                Price = 100,
+                SKU = sku,
+                Quantity = quantity,
+                Price = price,
                 Product = new Domain.Entities.Product.Product
                 {
-                    Name = "name",
-                    Description = "description",
-
+                    Name = productName,
                 },
-                Size = new Size { Value = "L" },
-                Color = new Color { Value = "red" }
+                Size = new Size { Value = size },
+                Color = new Color { Value = color }
             };
 
+            // act
             var destination = mapper.Map<ItemDto>(item);
 
-            //assert
-            Assert.Equal("1-1-1", destination.SKU);
-            Assert.Equal(1, destination.Quantity);
-            Assert.Equal(100, destination.Price);
-            Assert.Equal("name", destination.Name);
-            Assert.Equal("L", destination.Size);
-            Assert.Equal("red", destination.Color);
+            // assert
+            Assert.Equal(sku, destination.SKU);
+            Assert.Equal(quantity, destination.Quantity);
+            Assert.Equal(price, destination.Price);
+            Assert.Equal(productName, destination.Name);
+            Assert.Equal(size, destination.Size);
+            Assert.Equal(color, destination.Color);
         }
 
         [Fact]
         public void MappingProfile_ShouldMapCreateItemDtoToItem()
         {
-            //arrange
-            var configuration = new MapperConfiguration(cfg =>
-                cfg.AddProfile(new EcommerceShopMappingProfile()));
-
-            var mapper = configuration.CreateMapper();
-
+            // arrange
+            var mapper = GetMapper();
             var dto = new CreateItemDto
             {
                 SKU = "1-1-1",
@@ -127,10 +122,10 @@ namespace Application.Mappings.Tests
                 Price = 100,
             };
 
-            //act
+            // act
             var result = mapper.Map<Domain.Entities.Product.ProductItem>(dto);
 
-            //assert
+            // assert
             Assert.NotNull(result);
             Assert.Equal(dto.SKU, result.SKU);
             Assert.Equal(dto.ProductId, result.ProductId);
@@ -138,6 +133,29 @@ namespace Application.Mappings.Tests
             Assert.Equal(dto.ColorId, result.ColorId);
             Assert.Equal(dto.Quantity, result.Quantity);
             Assert.Equal(dto.Price, result.Price);
+        }
+
+        [Fact]
+        public void MappingProfile_ShouldMapCategoryToCategoryDto()
+        {
+            // arrange
+            var mapper = GetMapper();
+            var category = new Domain.Entities.Product.Category
+            {
+                Id = 1,
+                ParentId = 2,
+                Name = "test name",
+                Parent = new Domain.Entities.Product.Category { Id = 2, Name = "parent name" }
+            };
+
+            // act
+            var categoryDto = mapper.Map<CategoryDto>(category);
+
+            // assert
+            Assert.NotNull(categoryDto);
+            Assert.Equal(category.Name, categoryDto.Name);
+            Assert.NotNull(categoryDto.Parent);
+            Assert.Equal(category.Parent.Name, categoryDto.Parent.Name);
         }
     }
 }

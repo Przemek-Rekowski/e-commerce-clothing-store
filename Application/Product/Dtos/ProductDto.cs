@@ -8,6 +8,7 @@ namespace Application.Product.Dtos
         public string Description { get; set; } = default!;
         public double Price { get; set; }
         public bool IsAvalible { get; set; }
+        public string Category { get; set; } = default!;
 
         public List<SizeDto> SizeDtos { get; set; } = new();
     }

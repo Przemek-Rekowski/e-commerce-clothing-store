@@ -6,6 +6,7 @@
         public string Name { get; set; } = default!;
         public string Size { get; set; } = default!;
         public string Color { get; set; } = default!;
+        public string Category { get; set; } = default!;
         public int Quantity { get; set; }
         public int Price { get; set; }
     }
