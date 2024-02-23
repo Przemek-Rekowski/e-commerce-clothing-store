@@ -36,6 +36,10 @@ internal class ProductRepository : IProductRepository
     public async Task<IEnumerable<Product>> GetAll()
         => await _dbContext.Products.ToListAsync();
 
+    public async Task<IEnumerable<Product>> GetByCategory(int categoryId)
+        => await _dbContext.Products.Where(p => p.CategoryId == categoryId).ToListAsync();
+
+
     public async Task<Product?> GetById(int id)
-                => await _dbContext.Products.FirstOrDefaultAsync(p => p.Id == id);
+        => await _dbContext.Products.FirstOrDefaultAsync(p => p.Id == id);
 }

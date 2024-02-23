@@ -42,6 +42,14 @@ namespace ProductAPI.Controllers
             return Ok(dto);
         }
 
+        [HttpGet]
+        [Route("product/category/{id}")]
+        public async Task<IActionResult> GetByCategory([FromRoute] int categoryId)
+        {
+            var dto = await _mediator.Send(new GetProductByCategoryQuery(categoryId));
+            return Ok(dto);
+        }
+
         [HttpPost]
         [Route("product/{id}/edit")]
         public async Task<IActionResult> Update([FromBody] UpdateProductCommand command, [FromRoute] int id)
@@ -56,7 +64,7 @@ namespace ProductAPI.Controllers
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var dto = await _mediator.Send(new DeleteProductCommand(id));
-            return Ok(dto);
+            return Ok();
         }
     }
 }
