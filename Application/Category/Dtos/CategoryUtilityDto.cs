@@ -1,4 +1,4 @@
-﻿namespace Application.Category.Dtos
+﻿namespace EcommerceShop.Application.Category.Dtos
 {
     public class CategoryUtilityDto
     {

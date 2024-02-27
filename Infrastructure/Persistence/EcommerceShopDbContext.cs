@@ -1,4 +1,5 @@
-﻿using Domain.Entities.Product;
+﻿using Domain.Entities.Cart;
+using Domain.Entities.Product;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence
@@ -15,6 +16,7 @@ namespace Infrastructure.Persistence
         public DbSet<Color> Colors { get; set; }
         public DbSet<Size> Sizes { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -1,9 +1,7 @@
-﻿using EcommerceShop.Application.Item.CreateItem;
-using FluentValidation;
+﻿using FluentValidation;
 using Infrastructure.Persistence;
-using Microsoft.EntityFrameworkCore;
 
-namespace EcommerceShop.Application.Product.CreateProduct
+namespace EcommerceShop.Application.Item.CreateItem
 {
     public class CreateItemCommandValidation : AbstractValidator<CreateItemCommand>
     {

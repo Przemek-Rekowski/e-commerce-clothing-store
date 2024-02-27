@@ -1,6 +1,6 @@
-﻿using Application.Product.Dtos;
-using AutoMapper;
+﻿using AutoMapper;
 using Domain.Interfaces;
+using EcommerceShop.Application.Product.Dtos;
 using MediatR;
 
 namespace EcommerceShop.Application.Product.GetAllProducts

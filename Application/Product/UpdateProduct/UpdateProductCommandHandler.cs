@@ -1,8 +1,6 @@
 ﻿using Domain.Interfaces;
 using EcommerceShop.Application.Product.UpdateProduct;
 using MediatR;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Product.Application.Product.Commands.UpdateProduct
 {

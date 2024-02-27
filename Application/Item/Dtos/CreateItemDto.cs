@@ -1,4 +1,4 @@
-﻿namespace Application.Item.Dtos
+﻿namespace EcommerceShop.Application.Item.Dtos
 {
     public class CreateItemDto
     {

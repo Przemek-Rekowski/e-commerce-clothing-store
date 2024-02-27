@@ -1,8 +1,7 @@
 ﻿using Domain.Interfaces;
-using EcommerceShop.Application.Category.DeleteCategory;
 using MediatR;
 
-namespace TaskManager.Application.Category.Command.DeleteCategory
+namespace EcommerceShop.Application.Category.DeleteCategory
 {
     public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryCommand, Unit>
     {

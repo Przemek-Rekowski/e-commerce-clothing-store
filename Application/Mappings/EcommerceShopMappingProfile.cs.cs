@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
-using Application.Product.Dtos;
-using Application.Item.Dtos;
+using EcommerceShop.Application.Item.Dtos;
 using Domain.Entities.Product;
-using Application.Category.Dtos;
+using EcommerceShop.Application.Category.Dtos;
+using EcommerceShop.Application.CartItem.Dtos;
+using EcommerceShop.Application.Product.Dtos;
 
-namespace Application.Mappings
+namespace EcommerceShop.Application.Mappings
 {
     public class EcommerceShopMappingProfile : Profile
     {
@@ -33,6 +34,9 @@ namespace Application.Mappings
                 .ForMember(dest => dest.Parent, opt => opt.MapFrom(src => src.Parent));
 
             CreateMap<CategoryUtilityDto, Domain.Entities.Product.Category>();
+
+            CreateMap<Domain.Entities.Cart.CartItem, CartItemDto>();
+            CreateMap<CreateCartItemDto, Domain.Entities.Cart.CartItem>();
         }
     }
 }
