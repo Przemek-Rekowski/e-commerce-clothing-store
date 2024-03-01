@@ -1,6 +1,6 @@
-﻿using Application.Category.Dtos;
-using AutoMapper;
+﻿using AutoMapper;
 using Domain.Interfaces;
+using EcommerceShop.Application.Category.Dtos;
 using MediatR;
 
 namespace EcommerceShop.Application.Category.GetAllCategories

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using EcommerceShop.Application.Mappings;
 using Microsoft.Extensions.DependencyInjection;
-using Application.Mappings;
 
 namespace EcommerceShop.Application.Extensions
 {

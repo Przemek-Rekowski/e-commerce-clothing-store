@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using Application.Category.Dtos;
-using Application.Item.Dtos;
-using Application.Mappings;
-using Application.Product.Dtos;
-using AutoMapper;
+﻿using AutoMapper;
 using Domain.Entities.Product;
+using EcommerceShop.Application.Category.Dtos;
+using EcommerceShop.Application.Item.Dtos;
+using EcommerceShop.Application.Mappings;
+using EcommerceShop.Application.Product.Dtos;
 using Xunit;
 
 namespace Application.Mappings.Tests

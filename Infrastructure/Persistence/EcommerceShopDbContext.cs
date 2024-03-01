@@ -1,15 +1,14 @@
 ﻿using Domain.Entities.Cart;
 using Domain.Entities.Product;
+using Domain.Entities.User;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence
 {
-    public class EcommerceShopDbContext : DbContext
-    {
-        public EcommerceShopDbContext(DbContextOptions<EcommerceShopDbContext> options) : base(options)
-        {
-
-        }
+    public class EcommerceShopDbContext(DbContextOptions<EcommerceShopDbContext> options)
+    : IdentityDbContext<User>(options)
+    {      
 
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductItem> Items { get; set; }
