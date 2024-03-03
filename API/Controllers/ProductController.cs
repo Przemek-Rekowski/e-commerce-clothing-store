@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MediatR;
-using EcommerceShop.Application.Product.UpdateProduct;
+﻿using EcommerceShop.Application.Product.CreateProduct;
 using EcommerceShop.Application.Product.DeleteProduct;
 using EcommerceShop.Application.Product.GetAllProducts;
-using EcommerceShop.Application.Product.CreateProduct;
 using EcommerceShop.Application.Product.GetProductByCategory;
 using EcommerceShop.Application.Product.GetProductsById;
+using EcommerceShop.Application.Product.UpdateProduct;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ProductAPI.Controllers
 {
@@ -64,7 +64,7 @@ namespace ProductAPI.Controllers
         [Route("product/{id}/delete")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var dto = await _mediator.Send(new DeleteProductCommand(id));
+            await _mediator.Send(new DeleteProductCommand(id));
             return Ok();
         }
     }

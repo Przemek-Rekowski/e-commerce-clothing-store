@@ -1,6 +1,6 @@
 ﻿using Application.Category.CreateCategory;
 using AutoMapper;
-using Domain.Interfaces;
+using Domain.Interfaces.Product;
 using MediatR;
 
 namespace EcommerceShop.Application.Category.CreateCategory

@@ -1,10 +1,9 @@
-﻿using Domain.Entities.Cart;
-using Domain.Entities.Product;
-using Domain.Interfaces;
+﻿using Domain.Interfaces.Cart;
+using EcommerceShop.Domain.Entities.Cart;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repositories
+namespace Infrastructure.Repositories.Cart
 {
     internal class CartItemRepository : ICartItemRepository
     {

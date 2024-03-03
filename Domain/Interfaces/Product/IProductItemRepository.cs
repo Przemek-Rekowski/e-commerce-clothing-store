@@ -1,6 +1,6 @@
-﻿using Domain.Entities.Product;
+﻿using EcommerceShop.Domain.Entities.Product;
 
-namespace Domain.Interfaces
+namespace Domain.Interfaces.Product
 {
     public interface IProductItemRepository
     {

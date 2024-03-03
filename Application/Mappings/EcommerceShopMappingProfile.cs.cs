@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using EcommerceShop.Application.Item.Dtos;
-using Domain.Entities.Product;
 using EcommerceShop.Application.Category.Dtos;
 using EcommerceShop.Application.CartItem.Dtos;
 using EcommerceShop.Application.Product.Dtos;
+using EcommerceShop.Domain.Entities.Product;
 
 namespace EcommerceShop.Application.Mappings
 {

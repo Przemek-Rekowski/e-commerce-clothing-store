@@ -1,4 +1,4 @@
-﻿using Domain.Interfaces;
+﻿using Domain.Interfaces.Product;
 using MediatR;
 
 namespace EcommerceShop.Application.Category.DeleteCategory

@@ -1,4 +1,4 @@
-﻿using Domain.Interfaces;
+﻿using Domain.Interfaces.Cart;
 using MediatR;
 
 namespace EcommerceShop.Application.CartItem.UpdateCartItem

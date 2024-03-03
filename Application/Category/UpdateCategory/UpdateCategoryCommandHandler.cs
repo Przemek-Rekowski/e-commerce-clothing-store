@@ -1,4 +1,4 @@
-﻿using Domain.Interfaces;
+﻿using Domain.Interfaces.Product;
 using EcommerceShop.Application.Category.UpdateCategory;
 using MediatR;
 

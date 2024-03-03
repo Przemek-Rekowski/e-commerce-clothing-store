@@ -1,9 +1,9 @@
-﻿using Domain.Entities.Product;
-using Domain.Interfaces;
+﻿using Domain.Interfaces.Product;
+using EcommerceShop.Domain.Entities.Product;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repositories;
+namespace Infrastructure.Repositories.Product;
 internal class ProductItemRepository : IProductItemRepository
 {
     private readonly EcommerceShopDbContext _dbContext;
@@ -24,15 +24,15 @@ internal class ProductItemRepository : IProductItemRepository
 
     public async Task Delete(ProductItem product)
     {
-        _dbContext.Items.Remove(product);
+        _dbContext.ProductItems.Remove(product);
 
         await _dbContext.SaveChangesAsync();
     }
 
 
     public async Task<IEnumerable<ProductItem>> GetAll()
-        => await _dbContext.Items.ToListAsync();
+        => await _dbContext.ProductItems.ToListAsync();
 
     public async Task<ProductItem?> GetBySku(string sku)
-                => await _dbContext.Items.FirstOrDefaultAsync(i => i.SKU == sku);
+                => await _dbContext.ProductItems.FirstOrDefaultAsync(pi => pi.SKU == sku);
 }

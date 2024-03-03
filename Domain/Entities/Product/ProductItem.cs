@@ -1,4 +1,4 @@
-﻿namespace Domain.Entities.Product
+﻿namespace EcommerceShop.Domain.Entities.Product
 {
     public class ProductItem
     {

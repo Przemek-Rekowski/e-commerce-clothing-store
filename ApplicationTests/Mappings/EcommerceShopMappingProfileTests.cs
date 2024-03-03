@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Domain.Entities.Product;
+using EcommerceShop.Domain.Entities.Product;
 using EcommerceShop.Application.Category.Dtos;
 using EcommerceShop.Application.Item.Dtos;
 using EcommerceShop.Application.Mappings;
@@ -21,12 +21,12 @@ namespace Application.Mappings.Tests
         {
             //arrange
             var mapper = GetMapper();
-            var product = new Domain.Entities.Product.Product
+            var product = new EcommerceShop.Domain.Entities.Product.Product
             {
                 Id = 1,
                 Name = "Test Product",
                 Description = "Test Description",
-                Category = new Domain.Entities.Product.Category
+                Category = new EcommerceShop.Domain.Entities.Product.Category
                 {
                     Id = 1,
                     ParentId = 2,
@@ -66,7 +66,7 @@ namespace Application.Mappings.Tests
             };
 
             //act
-            var result = mapper.Map<Domain.Entities.Product.Product>(dto);
+            var result = mapper.Map<EcommerceShop.Domain.Entities.Product.Product>(dto);
 
             //assert
             Assert.NotNull(result);
@@ -86,7 +86,7 @@ namespace Application.Mappings.Tests
                 SKU = sku,
                 Quantity = quantity,
                 Price = price,
-                Product = new Domain.Entities.Product.Product
+                Product = new EcommerceShop.Domain.Entities.Product.Product
                 {
                     Name = productName,
                 },
@@ -122,7 +122,7 @@ namespace Application.Mappings.Tests
             };
 
             //act
-            var result = mapper.Map<Domain.Entities.Product.ProductItem>(dto);
+            var result = mapper.Map<ProductItem>(dto);
 
             //assert
             Assert.NotNull(result);
@@ -139,12 +139,12 @@ namespace Application.Mappings.Tests
         {
             //arrange
             var mapper = GetMapper();
-            var category = new Domain.Entities.Product.Category
+            var category = new EcommerceShop.Domain.Entities.Product.Category
             {
                 Id = 1,
                 ParentId = 2,
                 Name = "test name",
-                Parent = new Domain.Entities.Product.Category { Id = 2, Name = "parent name" }
+                Parent = new EcommerceShop.Domain.Entities.Product.Category { Id = 2, Name = "parent name" }
             };
 
             //act

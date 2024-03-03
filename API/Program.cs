@@ -1,6 +1,6 @@
 using API.Extensions;
-using Domain.Entities.User;
 using EcommerceShop.Application.Extensions;
+using EcommerceShop.Domain.Entities.User;
 using EcommerceShop.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);

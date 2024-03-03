@@ -1,17 +1,26 @@
-﻿using FluentValidation;
-using Infrastructure.Persistence;
+﻿using Domain.Interfaces.Product;
+using FluentValidation;
 
 namespace EcommerceShop.Application.Item.CreateItem
 {
     public class CreateItemCommandValidation : AbstractValidator<CreateItemCommand>
     {
-        public CreateItemCommandValidation(EcommerceShopDbContext dbContext)
+        private readonly IProductItemRepository _itemRepository;
+        private readonly IProductRepository _productRepository;
+        private readonly IColorRepository _colorRepository;
+        private readonly ISizeRepository _sizeRepository;
+        public CreateItemCommandValidation(IProductItemRepository itemRepository, IProductRepository productRepository, IColorRepository colorRepository, ISizeRepository sizeRepository)
         {
+            itemRepository = _itemRepository;
+            productRepository = _productRepository;
+            colorRepository = _colorRepository;
+            sizeRepository = _sizeRepository;
+
             RuleFor(i => i.ProductId)
                 .Custom((value, context) =>
                 {
-                    var productExist = dbContext.Products.Any(p => p.Id == value);
-                    if (!productExist)
+                    var product = _productRepository.GetById(value);
+                    if (product == null)
                     {
                         context.AddFailure("Product does not exist");
                     }
@@ -20,8 +29,8 @@ namespace EcommerceShop.Application.Item.CreateItem
             RuleFor(i => i.ColorId)
                   .Custom((value, context) =>
                   {
-                      var colorExist = dbContext.Colors.Any(c => c.Id == value);
-                      if (!colorExist)
+                      var color = _colorRepository.GetById(value);
+                      if (color != null)
                       {
                           context.AddFailure("Color does not exist");
                       }
@@ -30,8 +39,8 @@ namespace EcommerceShop.Application.Item.CreateItem
             RuleFor(i => i.SizeId)
                   .Custom((value, context) =>
                   {
-                      var sizeExist = dbContext.Sizes.Any(s => s.Id == value);
-                      if (!sizeExist)
+                      var size = _sizeRepository.GetById(value);
+                      if (size != null)
                       {
                           context.AddFailure("Size does not exist");
                       }
@@ -40,8 +49,9 @@ namespace EcommerceShop.Application.Item.CreateItem
             RuleFor(i => i.SKU)
                 .Custom((value, context) =>
                 {
-                    var skuExist = dbContext.Items.Any(i => i.SKU.Equals(value));
-                    if (skuExist)
+                    var sku = _itemRepository.GetBySku(value);
+
+                    if (sku != null)
                     {
                         context.AddFailure("Item already exists");
                     }

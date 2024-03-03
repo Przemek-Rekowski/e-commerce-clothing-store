@@ -1,9 +1,8 @@
-﻿using Domain.Entities.Product;
-using Domain.Interfaces;
+﻿using Domain.Interfaces.Product;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Repositories;
+namespace Infrastructure.Repositories.Product;
 internal class ProductRepository : IProductRepository
 {
     private readonly EcommerceShopDbContext _dbContext;
@@ -16,30 +15,30 @@ internal class ProductRepository : IProductRepository
     public Task Commit()
      => _dbContext.SaveChangesAsync();
 
-    public async Task Create(Product product)
+    public async Task Create(EcommerceShop.Domain.Entities.Product.Product product)
     {
         _dbContext.Add(product);
         await _dbContext.SaveChangesAsync();
     }
 
-    public async Task Delete(Product product)
+    public async Task Delete(EcommerceShop.Domain.Entities.Product.Product product)
     {
-        var itemsToRemove = _dbContext.Items.Where(i => i.ProductId == product.Id).ToList();
+        var itemsToRemove = _dbContext.ProductItems.Where(i => i.ProductId == product.Id).ToList();
 
-        _dbContext.Items.RemoveRange(itemsToRemove);
+        _dbContext.ProductItems.RemoveRange(itemsToRemove);
         _dbContext.Products.Remove(product);
 
         await _dbContext.SaveChangesAsync();
     }
 
 
-    public async Task<IEnumerable<Product>> GetAll()
+    public async Task<IEnumerable<EcommerceShop.Domain.Entities.Product.Product>> GetAll()
         => await _dbContext.Products.ToListAsync();
 
-    public async Task<IEnumerable<Product>> GetByCategory(int categoryId)
+    public async Task<IEnumerable<EcommerceShop.Domain.Entities.Product.Product>> GetByCategory(int categoryId)
         => await _dbContext.Products.Where(p => p.CategoryId == categoryId).ToListAsync();
 
 
-    public async Task<Product?> GetById(int id)
+    public async Task<EcommerceShop.Domain.Entities.Product.Product?> GetById(int id)
         => await _dbContext.Products.FirstOrDefaultAsync(p => p.Id == id);
 }

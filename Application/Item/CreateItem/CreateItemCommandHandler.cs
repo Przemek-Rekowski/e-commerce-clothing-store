@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Domain.Interfaces;
+using Domain.Interfaces.Product;
 using MediatR;
 
 namespace EcommerceShop.Application.Item.CreateItem

@@ -2,9 +2,11 @@
 using Microsoft.Extensions.DependencyInjection;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using Domain.Interfaces;
-using Infrastructure.Repositories;
-using Domain.Entities.User;
+using EcommerceShop.Domain.Entities.User;
+using Infrastructure.Repositories.Cart;
+using Infrastructure.Repositories.Product;
+using Domain.Interfaces.Product;
+using Domain.Interfaces.Cart;
 
 
 namespace EcommerceShop.Infrastructure.Extensions
@@ -24,6 +26,8 @@ namespace EcommerceShop.Infrastructure.Extensions
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductItemRepository, ProductItemRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ICartRepository, CartRepository>();
+            services.AddScoped<ICartItemRepository, CartItemRepository>();
         }
     }
 }

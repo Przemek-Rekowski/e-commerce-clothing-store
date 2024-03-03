@@ -1,10 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Security.Claims;
+using EcommerceShop.Domain.Entities.Cart;
+using Microsoft.AspNetCore.Http;
 
 namespace Application.Users
 {
@@ -13,11 +9,18 @@ namespace Application.Users
         CurrentUser? GetCurrentUser();
     }
 
-    public class UserContext(IHttpContextAccessor httpContextAccessor) : IUserContext
+    public class UserContext : IUserContext
     {
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public UserContext(IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
+
         public CurrentUser? GetCurrentUser()
         {
-            var user = httpContextAccessor?.HttpContext?.User;
+            var user = _httpContextAccessor?.HttpContext?.User;
             if (user == null)
             {
                 throw new InvalidOperationException("User context is not present");
