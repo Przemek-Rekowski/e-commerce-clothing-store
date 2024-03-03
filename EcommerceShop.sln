@@ -16,8 +16,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationTests", "ApplicationTests\ApplicationTests.csproj", "{A30A4C92-F24C-4B88-883D-A90489A20CCE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainTests", "DomainTests\DomainTests.csproj", "{07293B1A-4485-481B-A693-E87D813960C7}"
+<<<<<<< HEAD
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "client", "Client\client.esproj", "{40F3B524-AE04-4793-A99C-131D6FB67F65}"
+=======
+>>>>>>> bc8de67 (Cart and User relation)
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
