@@ -1,46 +1,82 @@
-import React, { useState } from 'react';
-import './Navbar.css';
+import { useMediaQuery } from 'react-responsive'
+import {HiSearch, HiMenu, HiX, HiChevronDown} from 'react-icons/hi'
+import { useState } from 'react'
 
-function Navbar() {
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
+import './navbar.css'
+import logo from './logo.svg'
+import links from './nav-links'
 
-  // Fake categories (replace with actual data from your API)
-  const fakeCategories = ['Hoodies', 'Pants', 'Sweatshirts', 'Accessories'];
 
-  const handleDropdownClick = () => {
-    setDropdownOpen(!isDropdownOpen);
-  };
+const reactIconStyle = {width: '20px', height: '20px', color: '#9e9ea7', cursor: 'pointer'}
 
-  return (
-    <div className="navbar">
-      <div className="logo">
-        {/* Your logo content goes here */}
-      </div>
-      <div className="nav-items">
-        <button className="nav-button" onClick={handleDropdownClick}>
-          Shop
-        </button>
-        {isDropdownOpen && (
-          <div className="nav-dropdown-content">
-            {/* Map through the fake categories and create dropdown links */}
-            {fakeCategories.map((category, index) => (
-              <a key={index} href={`/shop/${category}`} className="nav-link">
-                {category}
-              </a>
-            ))}
-          </div>
-        )}
-        <a href="/contact" className="nav-link">
-          Contact
-        </a>
-        <div className="nav-icons">
-          <a href="/language" className="nav-icon">
-            En
-          </a>
+function DesktopNavbar() {
+    return (
+        <div className='nav-container'>
+            <nav className='nav-desktop'>
+                <div className='logo-container'>
+                    <img src={logo} alt="Logo" className='logo' />
+                </div>
+                <ul className='desktop-menu'>
+                    {links.map((link) => {
+                        return <li key={link.name}><a href={link.route}>{link.name}</a></li>
+                    })}
+                </ul>
+            </nav>
+            <ul className='desktop-menu-btns'>
+                <li><HiSearch style={reactIconStyle} /></li>
+                <li>Sign in</li>
+                <li><p>Log In</p></li>
+            </ul>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 
-export default Navbar;
+function MobileNavbar({isOpen, setIsOpen}) {
+    return(
+        <>
+            <nav className='nav-mobile'>
+                    {isOpen ? <HiX onClick={() => setIsOpen(!isOpen)} style={reactIconStyle}/> : <HiMenu onClick={() => setIsOpen(!isOpen)} style={reactIconStyle}/>}
+                    <div className='logo-container'>
+                    <img src={logo} alt="Logo" className='logo' />
+                    </div>
+                    <ul className='desktop-menu-btns'>
+                        <li><HiSearch style={reactIconStyle} /></li>
+                        <li>Sign in</li>
+                        <li><p>Log In</p></li>
+                    </ul>
+            </nav>
+            {isOpen ? (
+                <div className='mobile-menu'>
+                    <form>
+                        <HiSearch style={reactIconStyle}/>
+                        <input placeholder='Search' />
+                    </form>
+                    
+                    <ul>
+                        {links.map(link => {
+                            return  <li key={link.name}>
+                                        <a href={link.route}>{link.name}</a>
+                                        <HiChevronDown style={reactIconStyle}/>
+                                    </li>
+                        })}
+                    </ul>
+                </div>
+            ) : (
+                null
+            )}
+        </>
+    )
+}
+
+export default function Navbar() {
+    const notMobile = useMediaQuery({
+        query: '(min-width: 1064px)'
+      })
+     
+    const [isOpen, setIsOpen] = useState(false)  
+    return(
+        <header>
+                {notMobile ? <DesktopNavbar /> : <MobileNavbar isOpen={isOpen} setIsOpen={setIsOpen} />}
+        </header>
+    )
+}
