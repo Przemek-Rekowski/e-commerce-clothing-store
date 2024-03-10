@@ -1,10 +1,9 @@
-﻿using Application.Item.Dtos;
-using AutoMapper;
-using Domain.Interfaces;
+﻿using AutoMapper;
+using Domain.Interfaces.Product;
+using EcommerceShop.Application.Item.Dtos;
 using MediatR;
-using Product.Application.Product.GetProductById;
 
-namespace Product.Application.Product.Queries.GetProductByEncodedName
+namespace EcommerceShop.Application.Item.GetItemBySku
 {
     public class GetItemBySkuQueryHandler : IRequestHandler<GetItemBySkuQuery, ItemDto>
     {

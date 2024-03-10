@@ -1,5 +1,4 @@
-﻿using Domain.Interfaces;
-using EcommerceShop.Application.Item.DeleteItem;
+﻿using Domain.Interfaces.Product;
 using MediatR;
 
 namespace EcommerceShop.Application.Item.DeleteItem

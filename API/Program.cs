@@ -1,4 +1,6 @@
+using API.Extensions;
 using EcommerceShop.Application.Extensions;
+using EcommerceShop.Domain.Entities.User;
 using EcommerceShop.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.AddPresentation();
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
 
@@ -21,7 +24,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors();
+
 app.UseHttpsRedirection();
+
+app.MapGroup("api/identity")
+    .WithTags("Identity")
+    .MapIdentityApi<User>();
 
 app.UseAuthorization();
 

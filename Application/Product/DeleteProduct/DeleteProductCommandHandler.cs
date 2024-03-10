@@ -1,8 +1,7 @@
-﻿using Domain.Interfaces;
-using EcommerceShop.Application.Product.DeleteProduct;
+﻿using Domain.Interfaces.Product;
 using MediatR;
 
-namespace TaskManager.Application.Product.Command.DeleteProduct
+namespace EcommerceShop.Application.Product.DeleteProduct
 {
     public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand, Unit>
     {

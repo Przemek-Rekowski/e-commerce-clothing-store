@@ -1,10 +1,9 @@
-﻿using Application.Product.Dtos;
-using AutoMapper;
-using Domain.Interfaces;
+﻿using AutoMapper;
+using Domain.Interfaces.Product;
+using EcommerceShop.Application.Product.Dtos;
 using MediatR;
-using Product.Application.Product.GetProductById;
 
-namespace Product.Application.Product.Queries.GetProductByEncodedName
+namespace EcommerceShop.Application.Product.GetProductByCategory
 {
     public class GetProductByCategoryQueryHandler : IRequestHandler<GetProductByCategoryQuery, ProductDto>
     {

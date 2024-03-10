@@ -1,4 +1,4 @@
-﻿using Application.Category.Dtos;
+﻿using EcommerceShop.Application.Category.Dtos;
 using MediatR;
 
 namespace Application.Category.CreateCategory

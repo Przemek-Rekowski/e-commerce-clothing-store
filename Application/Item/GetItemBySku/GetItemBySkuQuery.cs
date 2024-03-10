@@ -1,7 +1,7 @@
-﻿using Application.Item.Dtos;
+﻿using EcommerceShop.Application.Item.Dtos;
 using MediatR;
 
-namespace Product.Application.Product.GetProductById
+namespace EcommerceShop.Application.Item.GetItemBySku
 {
     public class GetItemBySkuQuery : IRequest<ItemDto>
     {

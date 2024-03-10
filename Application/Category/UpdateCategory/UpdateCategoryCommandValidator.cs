@@ -1,4 +1,4 @@
-﻿using Domain.Interfaces;
+﻿using Domain.Interfaces.Product;
 using FluentValidation;
 
 namespace EcommerceShop.Application.Category.UpdateCategory

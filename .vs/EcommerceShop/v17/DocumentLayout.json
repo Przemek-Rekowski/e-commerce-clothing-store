@@ -1,0 +1,85 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Komp\\source\\repos\\EcommerceShop\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{75BD5856-4EAE-46AD-BD2D-E3AF0486FE44}|API\\API.csproj|c:\\users\\komp\\source\\repos\\ecommerceshop\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75BD5856-4EAE-46AD-BD2D-E3AF0486FE44}|API\\API.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{914DD9F4-6E4B-4886-B85A-04E5AB22846C}|Domain\\Domain.csproj|c:\\users\\komp\\source\\repos\\ecommerceshop\\domain\\entities\\user\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{914DD9F4-6E4B-4886-B85A-04E5AB22846C}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\user\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F03692D8-4F9D-4B5E-B4E4-C57AB0E535B7}|Application\\Application.csproj|c:\\users\\komp\\source\\repos\\ecommerceshop\\application\\extentions\\servicecollectionextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F03692D8-4F9D-4B5E-B4E4-C57AB0E535B7}|Application\\Application.csproj|solutionrelative:application\\extentions\\servicecollectionextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FD12DB0-82B5-47B3-AAA4-84F5551FC154}|Infrastructure\\Infrastructure.csproj|c:\\users\\komp\\source\\repos\\ecommerceshop\\infrastructure\\extensions\\servicecollectionextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FD12DB0-82B5-47B3-AAA4-84F5551FC154}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\extensions\\servicecollectionextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 204,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Komp\\source\\repos\\EcommerceShop\\Domain\\Entities\\User\\User.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\User\\User.cs",
+              "ToolTip": "C:\\Users\\Komp\\source\\repos\\EcommerceShop\\Domain\\Entities\\User\\User.cs",
+              "RelativeToolTip": "Domain\\Entities\\User\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-10T20:01:07.916Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ServiceCollectionExtension.cs",
+              "DocumentMoniker": "C:\\Users\\Komp\\source\\repos\\EcommerceShop\\Application\\Extentions\\ServiceCollectionExtension.cs",
+              "RelativeDocumentMoniker": "Application\\Extentions\\ServiceCollectionExtension.cs",
+              "ToolTip": "C:\\Users\\Komp\\source\\repos\\EcommerceShop\\Application\\Extentions\\ServiceCollectionExtension.cs",
+              "RelativeToolTip": "Application\\Extentions\\ServiceCollectionExtension.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-10T19:55:32.776Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ServiceCollectionExtension.cs",
+              "DocumentMoniker": "C:\\Users\\Komp\\source\\repos\\EcommerceShop\\Infrastructure\\Extensions\\ServiceCollectionExtension.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Extensions\\ServiceCollectionExtension.cs",
+              "ToolTip": "C:\\Users\\Komp\\source\\repos\\EcommerceShop\\Infrastructure\\Extensions\\ServiceCollectionExtension.cs",
+              "RelativeToolTip": "Infrastructure\\Extensions\\ServiceCollectionExtension.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-10T19:55:24.937Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Komp\\source\\repos\\EcommerceShop\\API\\Program.cs",
+              "RelativeDocumentMoniker": "API\\Program.cs",
+              "ToolTip": "C:\\Users\\Komp\\source\\repos\\EcommerceShop\\API\\Program.cs",
+              "RelativeToolTip": "API\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-10T19:51:25.811Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

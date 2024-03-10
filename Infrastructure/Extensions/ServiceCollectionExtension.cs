@@ -2,8 +2,11 @@
 using Microsoft.Extensions.DependencyInjection;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using Domain.Interfaces;
-using Infrastructure.Repositories;
+using EcommerceShop.Domain.Entities.User;
+using Infrastructure.Repositories.Cart;
+using Infrastructure.Repositories.Product;
+using Domain.Interfaces.Product;
+using Domain.Interfaces.Cart;
 
 
 namespace EcommerceShop.Infrastructure.Extensions
@@ -12,15 +15,19 @@ namespace EcommerceShop.Infrastructure.Extensions
     {
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<EcommerceShopDbContext>(options => options
-                .UseSqlServer(configuration.GetConnectionString("EcommerceShop"))
-                .UseLazyLoadingProxies());
+            var connectionString = configuration.GetConnectionString("EcommerceShop");
+            services.AddDbContext<EcommerceShopDbContext>(options =>
+                options.UseSqlServer(connectionString)
+                    .UseLazyLoadingProxies());
 
-            var cn = configuration.GetConnectionString("EcommerceShop");
+            services.AddIdentityApiEndpoints<User>()
+                .AddEntityFrameworkStores<EcommerceShopDbContext>();
 
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductItemRepository, ProductItemRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ICartRepository, CartRepository>();
+            services.AddScoped<ICartItemRepository, CartItemRepository>();
         }
     }
 }

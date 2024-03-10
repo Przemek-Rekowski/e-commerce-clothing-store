@@ -1,7 +1,7 @@
-﻿using Application.Product.Dtos;
+﻿using EcommerceShop.Application.Product.Dtos;
 using MediatR;
 
-namespace Product.Application.Product.GetProductById
+namespace EcommerceShop.Application.Product.GetProductsById
 {
     public class GetProductByIdQuery : IRequest<ProductDto>
     {

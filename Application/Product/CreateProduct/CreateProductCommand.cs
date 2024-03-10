@@ -1,7 +1,7 @@
-﻿using Application.Product.Dtos;
+﻿using EcommerceShop.Application.Product.Dtos;
 using MediatR;
 
-namespace Application.Product.CreateProduct
+namespace EcommerceShop.Application.Product.CreateProduct
 {
     public class CreateProductCommand : CreateProductDto, IRequest<Unit>
     {

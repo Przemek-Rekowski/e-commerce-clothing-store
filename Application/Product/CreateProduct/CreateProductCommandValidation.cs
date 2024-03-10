@@ -1,6 +1,4 @@
-﻿using Application.Product.CreateProduct;
-using Domain.Interfaces;
-using FluentValidation;
+﻿using FluentValidation;
 
 namespace EcommerceShop.Application.Product.CreateProduct
 {

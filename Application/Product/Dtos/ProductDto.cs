@@ -1,6 +1,4 @@
-﻿using Domain.Entities.Product;
-
-namespace Application.Product.Dtos
+﻿namespace EcommerceShop.Application.Product.Dtos
 {
     public class ProductDto
     {

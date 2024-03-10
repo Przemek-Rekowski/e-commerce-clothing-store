@@ -1,9 +1,9 @@
 ﻿using EcommerceShop.Application.Item.CreateItem;
 using EcommerceShop.Application.Item.DeleteItem;
 using EcommerceShop.Application.Item.GetAllItems;
+using EcommerceShop.Application.Item.GetItemBySku;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Product.Application.Product.GetProductById;
 
 namespace ProductAPI.Controllers
 {
