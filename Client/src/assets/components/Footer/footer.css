@@ -1,28 +1,27 @@
 .site-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #f8f8f8;
-    padding: 20px;
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .meet-us, .customer-service {
-    flex: 1;
-  }
-  
-  .social-icons img {
-    width: 30px; /* Adjust the size as needed */
-    margin-right: 10px;
-  }
-  
-  .customer-service ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .customer-service li {
-    margin-bottom: 5px;
-  }
-  
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f8f8f8;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.meet-us, .customer-service {
+  flex: 1;
+}
+
+.social-icons img {
+  width: 30px; /* Adjust the size as needed */
+  margin-right: 10px;
+}
+
+.customer-service ul {
+  list-style: none;
+  padding: 0;
+}
+
+.customer-service li {
+  margin-bottom: 5px;
+}
