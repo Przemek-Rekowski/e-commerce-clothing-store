@@ -2,7 +2,7 @@ import { useMediaQuery } from 'react-responsive'
 import {HiSearch, HiMenu, HiX, HiChevronDown} from 'react-icons/hi'
 import { useState } from 'react'
 
-import './navbar.css'
+import './Navbar.css'
 import logo from './logo.svg'
 import links from './nav-links'
 
