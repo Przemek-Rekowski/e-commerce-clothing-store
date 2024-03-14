@@ -4,7 +4,7 @@ import Footer from './assets/components/Footer/Footer.jsx';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './assets/pages/Home.jsx'
-import About from './assets/pages/About.jsx'
+import About from './assets/pages/About/About.jsx'
 import Contact from './assets/pages/Contact.jsx'
 import Shop from './assets/pages/Shop.jsx'
 
@@ -13,12 +13,14 @@ function App() {
     <div>
         <Router>
           <Navbar/>
-          <Routes>
-            <Route path="/" element={Home()} />
-            <Route path="/about" element={About()} />
-            <Route path="/contact" element={Contact()} />
-            <Route path="/shop" element={Shop()} />
-          </Routes>
+          <div className="content-container">
+            <Routes>
+              <Route path="/" element={Home()} />
+              <Route path="/about" element={About()} />
+              <Route path="/contact" element={Contact()} />
+              <Route path="/shop" element={Shop()} />
+            </Routes>
+          </div>
           <Footer/>
        </Router>
     </div>
