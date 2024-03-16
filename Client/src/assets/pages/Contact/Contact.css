@@ -1,0 +1,16 @@
+.contact-container {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .contact-form-container {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .contact-header {
+    margin-bottom: 30px;
+    font-size: 30px;
+  }
