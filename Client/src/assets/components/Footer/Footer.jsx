@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import './footer.css';
+
 import tiktok from './tiktok-icon.svg';
 import facebook from './facebook-icon.svg';
 import instagram from './instagram-icon.svg';
@@ -26,15 +28,15 @@ const Footer = () => {
         <h4>Meet Us</h4>
         <p>Connect with us on different platforms and stay updated!</p>
         <div className="social-icons">
-          <a href="#" target="_blank" rel="noopener noreferrer">
+          <Link to="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer">
             <img src={tiktok} alt="TikTok" />
-          </a>
-          <a href="#" target="_blank" rel="noopener noreferrer">
+          </Link>
+          <Link to="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
             <img src={facebook} alt="Facebook" />
-          </a>
-          <a href="#" target="_blank" rel="noopener noreferrer">
+          </Link>
+          <Link to="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
             <img src={instagram} alt="Instagram" />
-          </a>
+          </Link>
         </div>
       </div>
 
