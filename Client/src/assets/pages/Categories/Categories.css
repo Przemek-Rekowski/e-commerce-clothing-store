@@ -1,0 +1,12 @@
+.category-container {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+
+  .category-header {
+    margin-bottom: 30px;
+    font-size: 30px;
+  }
