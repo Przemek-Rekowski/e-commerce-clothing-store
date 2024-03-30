@@ -4,6 +4,7 @@ using EcommerceShop.Application.Category.Dtos;
 using EcommerceShop.Application.CartItem.Dtos;
 using EcommerceShop.Application.Product.Dtos;
 using EcommerceShop.Domain.Entities.Product;
+using Application.ProductImages.Dtos;
 
 namespace EcommerceShop.Application.Mappings
 {
@@ -22,6 +23,9 @@ namespace EcommerceShop.Application.Mappings
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => $"{src.Name} {src.Category.Name.ToLower()}"));
 
             CreateMap<CreateProductDto, Domain.Entities.Product.Product>();
+
+            CreateMap<CreateProductImageDto, ProductImage>();
+            CreateMap<ProductImage, ProductImageDto>();
 
             CreateMap<ProductItem, ItemDto>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Product.Name))

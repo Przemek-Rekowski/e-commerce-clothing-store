@@ -1,4 +1,6 @@
-﻿namespace EcommerceShop.Domain.Entities.Product
+﻿using Domain.Entities.Product;
+
+namespace EcommerceShop.Domain.Entities.Product
 {
     public class Product
     {
@@ -9,5 +11,6 @@
 
         public virtual Category Category { get; set; } = default!;
         public virtual List<ProductItem> Items { get; set; } = new();
+        public virtual List<ProductImage> Images { get; set; } = new();
     }
 }

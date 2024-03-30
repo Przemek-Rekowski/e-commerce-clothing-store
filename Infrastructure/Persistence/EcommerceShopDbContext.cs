@@ -6,9 +6,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence
 {
-    public class EcommerceShopDbContext(DbContextOptions<EcommerceShopDbContext> options)
-    : IdentityDbContext<User>(options)
-    {      
+    public class EcommerceShopDbContext : IdentityDbContext<User>
+    {
+        public EcommerceShopDbContext(DbContextOptions<EcommerceShopDbContext> options)
+            : base(options)
+        {
+        }
 
         public DbSet<EcommerceShop.Domain.Entities.Product.Product> Products { get; set; }
         public DbSet<ProductItem> ProductItems { get; set; }
@@ -17,6 +20,9 @@ namespace Infrastructure.Persistence
         public DbSet<EcommerceShop.Domain.Entities.Product.Category> Categories { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
         public DbSet<Cart> Carts { get; set; }
+
+        // Add DbSet for ProductImage
+        public DbSet<ProductImage> ProductImages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -28,9 +34,9 @@ namespace Infrastructure.Persistence
                 .HasForeignKey(pi => pi.ProductId);
 
             modelBuilder.Entity<EcommerceShop.Domain.Entities.Product.Product>()
-                .HasOne(p => p.Category)
-                .WithMany(c => c.Products)
-                .HasForeignKey(p => p.CategoryId);
+                .HasMany(p => p.Images)
+                .WithOne(pi => pi.Product)
+                .HasForeignKey(pi => pi.ProductId);
 
             modelBuilder.Entity<ProductItem>()
                 .HasKey(pi => pi.SKU);

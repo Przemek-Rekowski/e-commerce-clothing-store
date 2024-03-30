@@ -25,6 +25,7 @@ namespace EcommerceShop.Infrastructure.Extensions
 
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductItemRepository, ProductItemRepository>();
+            services.AddScoped<IProductImageRepository, ProductImageRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICartRepository, CartRepository>();
             services.AddScoped<ICartItemRepository, CartItemRepository>();
