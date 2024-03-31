@@ -7,6 +7,7 @@ using Infrastructure.Repositories.Cart;
 using Infrastructure.Repositories.Product;
 using Domain.Interfaces.Product;
 using Domain.Interfaces.Cart;
+using Infrastructure.Repositories.Item;
 
 
 namespace EcommerceShop.Infrastructure.Extensions
@@ -24,8 +25,9 @@ namespace EcommerceShop.Infrastructure.Extensions
                 .AddEntityFrameworkStores<EcommerceShopDbContext>();
 
             services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IProductItemRepository, ProductItemRepository>();
             services.AddScoped<IProductImageRepository, ProductImageRepository>();
+            services.AddScoped<IProductItemRepository, ProductItemRepository>();
+            services.AddScoped<IItemImageRepository, ItemImageRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICartRepository, CartRepository>();
             services.AddScoped<ICartItemRepository, CartItemRepository>();

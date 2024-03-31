@@ -20,7 +20,7 @@ namespace API.Controllers.Product
         }
 
         [HttpPost]
-        [Route("image")]
+        [Route("product/image")]
         public async Task<IActionResult> Create([FromBody] CreateProductImageCommand command)
         {
             await _mediator.Send(command);
@@ -28,7 +28,7 @@ namespace API.Controllers.Product
         }
 
         [HttpGet]
-        [Route("image/{productId}")]
+        [Route("product/{productId}/image")]
         public async Task<IActionResult> GetByProduct([FromRoute] int productId)
         {
             var dto = await _mediator.Send(new GetImagesByProductQuery(productId));
@@ -36,7 +36,7 @@ namespace API.Controllers.Product
         }
 
         [HttpDelete]
-        [Route("image/{id}/delete")]
+        [Route("product/image/{id}/delete")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var dto = await _mediator.Send(new DeleteProductImageCommand(id));
@@ -44,7 +44,7 @@ namespace API.Controllers.Product
         }
 
         [HttpDelete]
-        [Route("image/by-product/{productId}")]
+        [Route("product/{productId}/image")]
         public async Task<IActionResult> DeleteByProduct([FromRoute] int productId)
         {
             var dto = await _mediator.Send(new DelateImageByProductCommand(productId));

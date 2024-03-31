@@ -14,15 +14,14 @@ namespace Infrastructure.Persistence
         }
 
         public DbSet<EcommerceShop.Domain.Entities.Product.Product> Products { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<ItemImage> ItemImages { get; set; }
         public DbSet<ProductItem> ProductItems { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<Size> Sizes { get; set; }
         public DbSet<EcommerceShop.Domain.Entities.Product.Category> Categories { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
         public DbSet<Cart> Carts { get; set; }
-
-        // Add DbSet for ProductImage
-        public DbSet<ProductImage> ProductImages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -37,6 +36,22 @@ namespace Infrastructure.Persistence
                 .HasMany(p => p.Images)
                 .WithOne(pi => pi.Product)
                 .HasForeignKey(pi => pi.ProductId);
+
+            modelBuilder.Entity<ProductImage>()
+                .HasKey(pi => pi.Id);
+
+            modelBuilder.Entity<ProductImage>()
+                .HasOne(pi => pi.Product)
+                .WithMany(p => p.Images)
+                .HasForeignKey(pi => pi.ProductId);
+
+            modelBuilder.Entity<ItemImage>()
+                .HasKey(ii => ii.Id);
+
+            modelBuilder.Entity<ItemImage>()
+                .HasOne(ii => ii.Item)
+                .WithMany(pi => pi.Images)
+                .HasForeignKey(ii => ii.ItemSku);
 
             modelBuilder.Entity<ProductItem>()
                 .HasKey(pi => pi.SKU);

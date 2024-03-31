@@ -14,20 +14,16 @@ namespace Infrastructure.Repositories.Product
             _dbContext = dbContext;
         }
 
-        public async Task<ProductImage> Create(ProductImage productImage)
+        public async Task Create(ProductImage productImage)
         {
             _dbContext.ProductImages.Add(productImage);
             await _dbContext.SaveChangesAsync();
-            return productImage;
         }
 
         public async Task<List<ProductImage>> GetAllByProduct(int productId)
-        {
-            return await _dbContext.ProductImages
+            => await _dbContext.ProductImages
                 .Where(pi => pi.ProductId == productId)
                 .ToListAsync();
-        }
-
         public async Task<ProductImage> GetById(int id)
              => await _dbContext.ProductImages.FirstOrDefaultAsync(pi => pi.Id == id);
 
