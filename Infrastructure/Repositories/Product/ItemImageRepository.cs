@@ -23,7 +23,7 @@ namespace Infrastructure.Repositories.Item
             => await _dbContext.ItemImages
                 .Where(pi => pi.ItemSku == itemSku)
                 .ToListAsync();
-        public async Task<ItemImage> GetById(int id)
+        public async Task<ItemImage?> GetById(int id)
              => await _dbContext.ItemImages.FirstOrDefaultAsync(pi => pi.Id == id);
 
         public async Task Delete(ItemImage image)

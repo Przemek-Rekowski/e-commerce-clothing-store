@@ -15,7 +15,10 @@ namespace EcommerceShop.Application.Category.DeleteCategory
         {
             var category = await _repository.GetById(request.Id!);
 
-            await _repository.Delete(category);
+            if(category != null)
+            {
+                await _repository.Delete(category);
+            }
 
             return Unit.Value;
         }

@@ -16,7 +16,10 @@ namespace Application.ItemImages.DeleteImage
         {
             var item = await _repository.GetById(request.Id!);
 
-            await _repository.Delete(item);
+            if (item != null)
+            {
+                await _repository.Delete(item);
+            }
 
             return Unit.Value;
         }

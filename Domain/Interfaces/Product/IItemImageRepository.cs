@@ -11,7 +11,7 @@ namespace Domain.Interfaces.Product
     public interface IItemImageRepository
     {
         Task Create(ItemImage productImage);
-        Task<ItemImage> GetById(int id);
+        Task<ItemImage?> GetById(int id);
         Task<List<ItemImage>> GetAllByItem(string sku);
         Task Delete(ItemImage image);
         Task DeleteByItem(string sku);

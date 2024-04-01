@@ -17,8 +17,11 @@ namespace Product.Application.Product.Commands.UpdateProduct
         {
             var product = await _repository.GetById(request.Id);
 
-            product.Name = request.Name;
-            product.Description = request.Description;
+            if(product != null)
+            {
+                product.Name = request.Name;
+                product.Description = request.Description;
+            }
 
             await _repository.Commit();
 

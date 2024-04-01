@@ -1,4 +1,6 @@
 ﻿using Domain.Interfaces.Product;
+using EcommerceShop.Application.Product.DeleteProduct;
+using EcommerceShop.Domain.Entities.Product;
 using MediatR;
 
 namespace EcommerceShop.Application.Item.DeleteItem
@@ -15,7 +17,10 @@ namespace EcommerceShop.Application.Item.DeleteItem
         {
             var item = await _repository.GetBySku(request.SKU!);
 
-            await _repository.Delete(item);
+            if (item != null)
+            {
+                await _repository.Delete(item);
+            }
 
             return Unit.Value;
         }

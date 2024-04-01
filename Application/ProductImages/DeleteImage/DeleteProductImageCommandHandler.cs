@@ -2,6 +2,7 @@
 using EcommerceShop.Application.Image.DeleteImage;
 using EcommerceShop.Application.Item.DeleteItem;
 using MediatR;
+using Microsoft.AspNetCore.Http.Metadata;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,10 @@ namespace Application.ProductImages.DeleteImage
         {
             var item = await _repository.GetById(request.Id!);
 
-            await _repository.Delete(item);
+            if(item != null)
+            {
+                await _repository.Delete(item);
+            }
 
             return Unit.Value;
         }

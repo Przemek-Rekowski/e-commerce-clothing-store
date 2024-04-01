@@ -24,7 +24,7 @@ namespace Infrastructure.Repositories.Product
             => await _dbContext.ProductImages
                 .Where(pi => pi.ProductId == productId)
                 .ToListAsync();
-        public async Task<ProductImage> GetById(int id)
+        public async Task<ProductImage?> GetById(int id)
              => await _dbContext.ProductImages.FirstOrDefaultAsync(pi => pi.Id == id);
 
 
