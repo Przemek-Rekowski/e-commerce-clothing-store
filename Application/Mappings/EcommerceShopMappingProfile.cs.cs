@@ -5,6 +5,7 @@ using EcommerceShop.Application.CartItem.Dtos;
 using EcommerceShop.Application.Product.Dtos;
 using EcommerceShop.Domain.Entities.Product;
 using Application.ProductImages.Dtos;
+using Application.ItemImages.Dtos;
 
 namespace EcommerceShop.Application.Mappings
 {
@@ -26,6 +27,9 @@ namespace EcommerceShop.Application.Mappings
 
             CreateMap<CreateProductImageDto, ProductImage>();
             CreateMap<ProductImage, ProductImageDto>();
+
+            CreateMap<CreateItemImageDto, ItemImage>();
+            CreateMap<ItemImage, ItemImageDto>();
 
             CreateMap<ProductItem, ItemDto>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Product.Name))

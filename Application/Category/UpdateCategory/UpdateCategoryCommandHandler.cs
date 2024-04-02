@@ -17,10 +17,13 @@ namespace Category.Application.Category.Commands.UpdateCategory
         {
             var category = await _repository.GetById(request.Id);
 
-            category.Name = request.Name;
-            category.ParentId = request.ParentId;
+            if(category != null)
+            {
+                category.Name = request.Name;
+                category.ParentId = request.ParentId;
 
-            await _repository.Commit();
+                await _repository.Commit();
+            }
 
             return Unit.Value;
         }

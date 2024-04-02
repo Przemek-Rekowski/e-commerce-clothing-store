@@ -11,10 +11,10 @@ namespace EcommerceShop.Application.Item.CreateItem
         private readonly ISizeRepository _sizeRepository;
         public CreateItemCommandValidation(IProductItemRepository itemRepository, IProductRepository productRepository, IColorRepository colorRepository, ISizeRepository sizeRepository)
         {
-            itemRepository = _itemRepository;
-            productRepository = _productRepository;
-            colorRepository = _colorRepository;
-            sizeRepository = _sizeRepository;
+            _itemRepository = itemRepository;
+            _productRepository = productRepository;
+            _colorRepository = colorRepository;
+            _sizeRepository = sizeRepository;
 
             RuleFor(i => i.ProductId)
                 .Custom((value, context) =>
@@ -49,13 +49,20 @@ namespace EcommerceShop.Application.Item.CreateItem
             RuleFor(i => i.SKU)
                 .Custom((value, context) =>
                 {
-                    var sku = _itemRepository.GetBySku(value);
-
-                    if (sku != null)
+                    if (value != null)
                     {
-                        context.AddFailure("Item already exists");
+                        var sku = _itemRepository.GetBySku(value);
+                        if (sku != null)
+                        {
+                            context.AddFailure("Item already exists");
+                        }
+                    }
+                    else
+                    {
+                        context.AddFailure("SKU cannot be null");
                     }
                 });
+
 
             RuleFor(dto => dto.Quantity)
                 .GreaterThanOrEqualTo(0)

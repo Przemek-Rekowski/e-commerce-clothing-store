@@ -12,6 +12,7 @@
         public virtual Product Product { get; set; } = default!;
         public virtual Size Size { get; set; } = default!;
         public virtual Color Color { get; set; } = default!;
+        public virtual List<ItemImage> Images { get; set; } = new();
 
         public void GenerateSKU() => SKU = $"{ProductId}-{SizeId}-{ColorId}";
     }

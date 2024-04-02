@@ -16,9 +16,11 @@ namespace EcommerceShop.Application.CartItem.UpdateCartItem
         {
             var item = await _repository.GetById(request.Id);
 
-            item.Quantity = request.Quantity;
-
-            await _repository.Commit();
+            if (item != null)
+            {
+                item.Quantity = request.Quantity;
+                await _repository.Commit();
+            }
 
             return Unit.Value;
         }

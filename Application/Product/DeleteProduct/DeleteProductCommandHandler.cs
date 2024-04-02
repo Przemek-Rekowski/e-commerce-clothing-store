@@ -15,10 +15,14 @@ namespace EcommerceShop.Application.Product.DeleteProduct
         {
             var product = await _repository.GetById(request.Id!);
 
-            await _repository.Delete(product);
+            if (product != null)
+            {
+                await _repository.Delete(product);
+            }
 
             return Unit.Value;
         }
+
     }
 
 }
