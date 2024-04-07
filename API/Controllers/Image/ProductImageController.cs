@@ -5,7 +5,7 @@ using EcommerceShop.Application.Image.DeleteImage;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace API.Controllers.Product
+namespace API.Controllers.Image
 {
     [Route("api")]
     [ApiController]

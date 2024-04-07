@@ -1,4 +1,4 @@
-﻿using Domain.Interfaces.Product;
+﻿using Domain.Interfaces.Image;
 using MediatR;
 
 namespace Application.ItemImages.DelateImageByItem

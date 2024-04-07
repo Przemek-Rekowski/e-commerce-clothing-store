@@ -1,4 +1,6 @@
-﻿namespace EcommerceShop.Domain.Entities.Product
+﻿using Domain.Entities.Image;
+
+namespace EcommerceShop.Domain.Entities.Product
 {
     public class ProductItem
     {
@@ -9,10 +11,10 @@
         public int Quantity { get; set; }
         public int Price { get; set; }
 
-        public virtual Product Product { get; set; } = default!;
-        public virtual Size Size { get; set; } = default!;
-        public virtual Color Color { get; set; } = default!;
-        public virtual List<ItemImage> Images { get; set; } = new();
+        public  Product Product { get; set; } = default!;
+        public  Size Size { get; set; } = default!;
+        public  Color Color { get; set; } = default!;
+        public  List<ItemImage> Images { get; set; } = new();
 
         public void GenerateSKU() => SKU = $"{ProductId}-{SizeId}-{ColorId}";
     }

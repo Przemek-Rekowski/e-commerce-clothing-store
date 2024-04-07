@@ -20,7 +20,7 @@ namespace Category.Application.Category.Commands.UpdateCategory
             if(category != null)
             {
                 category.Name = request.Name;
-                category.ParentId = request.ParentId;
+                //category.ParentId = request.ParentId;
 
                 await _repository.Commit();
             }

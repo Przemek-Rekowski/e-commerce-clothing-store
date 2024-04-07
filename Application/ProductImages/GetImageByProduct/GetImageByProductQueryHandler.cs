@@ -1,6 +1,6 @@
 ﻿using Application.ProductImages.Dtos;
 using AutoMapper;
-using Domain.Interfaces.Product;
+using Domain.Interfaces.Image;
 using MediatR;
 
 namespace Application.ProductImages.GetImageByProduct

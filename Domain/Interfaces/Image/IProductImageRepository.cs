@@ -1,6 +1,6 @@
-﻿using EcommerceShop.Domain.Entities.Product;
+﻿using Domain.Entities.Image;
 
-namespace Domain.Interfaces.Product
+namespace Domain.Interfaces.Image
 {
     public interface IProductImageRepository
     {

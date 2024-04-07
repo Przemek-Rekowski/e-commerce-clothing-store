@@ -1,4 +1,6 @@
-﻿namespace EcommerceShop.Domain.Entities.Product
+﻿using EcommerceShop.Domain.Entities.Product;
+
+namespace Domain.Entities.Image
 {
     public class ItemImage
     {
