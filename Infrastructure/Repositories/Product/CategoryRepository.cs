@@ -30,8 +30,6 @@ namespace Infrastructure.Repositories.Product
 
         public async Task<IEnumerable<EcommerceShop.Domain.Entities.Product.Category>> GetAll()
             => await _dbContext.Categories
-                .Include(c => c.Products)
-                //.Include(c => c.Parent)
                 .ToListAsync();
 
         public async Task<EcommerceShop.Domain.Entities.Product.Category?> GetById(int id)

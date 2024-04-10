@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CategoryCard from '../../../assets/components/CategoryCard/CategoryCard.jsx';
 import './Categories.css';
+import axios from 'axios';
 
 const Categories = () => {
-  // Define an array of categories
-  const categories = ['Hoodies', 'Pants', 'Accessories', 'Shoes', 'Tops'];
+  const [categoryData, setCategoryData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("https://localhost:7172/api/category");
+        setCategoryData(response.data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
-    <div>
-      <h1 className="category-header">Categories</h1>
-      <div className="category-container">
-        {/* Map through categories array and render CategoryCard for each category */}
-        {categories.map((category, index) => (
-          <CategoryCard key={index} category={category} />
-        ))}
-      </div>
+    <div className="categories-container">
+      {categoryData.map((category, index) => (
+        <CategoryCard key={index} category={category} />
+      ))}
     </div>
   );
 };
