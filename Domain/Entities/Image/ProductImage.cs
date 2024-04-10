@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EcommerceShop.Domain.Entities.Product;
 
-namespace EcommerceShop.Domain.Entities.Product
+namespace Domain.Entities.Image
 {
     public class ProductImage
     {

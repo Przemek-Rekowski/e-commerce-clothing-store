@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Entities.Image;
 
-using EcommerceShop.Domain.Entities.Product;
-
-namespace Domain.Interfaces.Product
+namespace Domain.Interfaces.Image
 {
     public interface IItemImageRepository
     {

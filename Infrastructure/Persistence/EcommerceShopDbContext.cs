@@ -1,4 +1,5 @@
-﻿using EcommerceShop.Domain.Entities.Cart;
+﻿using Domain.Entities.Image;
+using EcommerceShop.Domain.Entities.Cart;
 using EcommerceShop.Domain.Entities.Product;
 using EcommerceShop.Domain.Entities.User;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;

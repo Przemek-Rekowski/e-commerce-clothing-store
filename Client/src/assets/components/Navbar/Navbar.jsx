@@ -15,7 +15,6 @@ function DesktopNavbar() {
         <div className='nav-container'>
             <nav className='nav-desktop'>
                 <div className='logo-container'>
-                    {/* Wrap logo with Link component */}
                     <Link to="/">
                         <img src={logo} alt="Logo" className='logo' />
                     </Link>

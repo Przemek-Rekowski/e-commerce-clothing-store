@@ -7,7 +7,8 @@ using Infrastructure.Repositories.Cart;
 using Infrastructure.Repositories.Product;
 using Domain.Interfaces.Product;
 using Domain.Interfaces.Cart;
-using Infrastructure.Repositories.Item;
+using Domain.Interfaces.Image;
+using Infrastructure.Repositories.Image;
 
 
 namespace EcommerceShop.Infrastructure.Extensions
@@ -18,8 +19,7 @@ namespace EcommerceShop.Infrastructure.Extensions
         {
             var connectionString = configuration.GetConnectionString("EcommerceShop");
             services.AddDbContext<EcommerceShopDbContext>(options =>
-                options.UseSqlServer(connectionString)
-                    .UseLazyLoadingProxies());
+                options.UseSqlServer(connectionString));
 
             services.AddIdentityApiEndpoints<User>()
                 .AddEntityFrameworkStores<EcommerceShopDbContext>();

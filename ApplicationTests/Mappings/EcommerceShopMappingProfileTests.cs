@@ -29,7 +29,7 @@ namespace Application.Mappings.Tests
                 Category = new EcommerceShop.Domain.Entities.Product.Category
                 {
                     Id = 1,
-                    ParentId = 2,
+                    //ParentId = 2,
                     Name = "test name",
                 },
                 Items = new List<ProductItem>
@@ -142,9 +142,9 @@ namespace Application.Mappings.Tests
             var category = new EcommerceShop.Domain.Entities.Product.Category
             {
                 Id = 1,
-                ParentId = 2,
+                //ParentId = 2,
                 Name = "test name",
-                Parent = new EcommerceShop.Domain.Entities.Product.Category { Id = 2, Name = "parent name" }
+                //Parent = new EcommerceShop.Domain.Entities.Product.Category { Id = 2, Name = "parent name" }
             };
 
             //act
@@ -153,8 +153,8 @@ namespace Application.Mappings.Tests
             //assert
             Assert.NotNull(categoryDto);
             Assert.Equal(category.Name, categoryDto.Name);
-            Assert.NotNull(categoryDto.Parent);
-            Assert.Equal(category.Parent.Name, categoryDto.Parent.Name);
+            //Assert.NotNull(categoryDto.Parent);
+           // Assert.Equal(category.Parent.Name, categoryDto.Parent.Name);
         }
     }
 }

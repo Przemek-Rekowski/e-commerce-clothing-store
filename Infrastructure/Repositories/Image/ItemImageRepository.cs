@@ -1,8 +1,8 @@
-﻿using Domain.Interfaces.Product;
-using EcommerceShop.Domain.Entities.Product;
+﻿using Domain.Entities.Image;
+using Domain.Interfaces.Image;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-namespace Infrastructure.Repositories.Item
+namespace Infrastructure.Repositories.Image
 {
     public class ItemImageRepository : IItemImageRepository
     {

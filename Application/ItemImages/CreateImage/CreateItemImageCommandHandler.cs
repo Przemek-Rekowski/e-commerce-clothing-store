@@ -1,7 +1,7 @@
 ﻿using Application.ItemImages.CreateItemImage;
 using AutoMapper;
-using Domain.Interfaces.Product;
-using EcommerceShop.Domain.Entities.Product;
+using Domain.Entities.Image;
+using Domain.Interfaces.Image;
 using MediatR;
 
 namespace Application.ItemImages.CreateImage

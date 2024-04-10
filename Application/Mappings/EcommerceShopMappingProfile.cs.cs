@@ -6,6 +6,7 @@ using EcommerceShop.Application.Product.Dtos;
 using EcommerceShop.Domain.Entities.Product;
 using Application.ProductImages.Dtos;
 using Application.ItemImages.Dtos;
+using Domain.Entities.Image;
 
 namespace EcommerceShop.Application.Mappings
 {
@@ -14,14 +15,19 @@ namespace EcommerceShop.Application.Mappings
         public EcommerceShopMappingProfile()
         {
             CreateMap<Domain.Entities.Product.Product, ProductDto>()
-                .ForMember(dest => dest.SizeDtos, opt => opt.MapFrom(src => src.Items.Select(item => new SizeDto
-                {
-                    Value = item.Size.Value,
-                    IsAvalible = item.Quantity > 0
-                })))
-                .ForMember(dest => dest.IsAvalible, opt => opt.MapFrom(src => src.Items.Any(item => item.Quantity > 0)))
+                .ForMember(dest => dest.SizeDtos, opt => opt.MapFrom(src => src.Items
+                    .GroupBy(item => item.Size.Value)
+                    .Select(group => new SizeDto
+                    {
+                        Value = group.Key,
+                        IsAvalible = group.Any(item => item.Quantity > 0)
+                    }).ToList()
+                ))
                 .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Category.Name))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => $"{src.Name} {src.Category.Name.ToLower()}"));
+                .ForMember(dest => dest.IsAvalible, opt => opt.MapFrom(src => src.Items.Any(item => item.Quantity > 0)))
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => $"{src.Name} {(src.Category.Name.ToLower())}"));
+
+
 
             CreateMap<CreateProductDto, Domain.Entities.Product.Product>();
 
@@ -34,12 +40,13 @@ namespace EcommerceShop.Application.Mappings
             CreateMap<ProductItem, ItemDto>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Product.Name))
                 .ForMember(dest => dest.Size, opt => opt.MapFrom(src => src.Size.Value))
-                .ForMember(dest => dest.Color, opt => opt.MapFrom(src => src.Color.Value));
+                .ForMember(dest => dest.Color, opt => opt.MapFrom(src => src.Color.Value))
+                .ForMember(dest => dest.Category, opt => opt.MapFrom(src => $"{src.Product.Category.Name.ToLower()}"));
 
             CreateMap<CreateItemDto, ProductItem>();
 
-            CreateMap<Domain.Entities.Product.Category, CategoryDto>()
-                .ForMember(dest => dest.Parent, opt => opt.MapFrom(src => src.Parent));
+            CreateMap<Domain.Entities.Product.Category, CategoryDto>();
+                //.ForMember(dest => dest.Parent, opt => opt.MapFrom(src => src.Parent));
 
             CreateMap<CategoryUtilityDto, Domain.Entities.Product.Category>();
 

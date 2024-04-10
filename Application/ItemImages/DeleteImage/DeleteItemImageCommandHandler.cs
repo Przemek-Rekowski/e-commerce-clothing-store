@@ -1,4 +1,4 @@
-﻿using Domain.Interfaces.Product;
+﻿using Domain.Interfaces.Image;
 using EcommerceShop.Application.ItemImages.DeleteImage;
 using MediatR;
 
