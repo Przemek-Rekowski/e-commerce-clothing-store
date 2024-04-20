@@ -78,6 +78,9 @@ namespace Infrastructure.Persistence
                 .HasForeignKey(pi => pi.SizeId);
 
             modelBuilder.Entity<EcommerceShop.Domain.Entities.Product.Category>()
+                .HasKey(c => c.Name);
+
+            modelBuilder.Entity<EcommerceShop.Domain.Entities.Product.Category>()
                 .HasMany(c => c.Products)
                 .WithOne(p => p.Category)
                 .HasForeignKey(p => p.CategoryId);

@@ -32,10 +32,6 @@ namespace Infrastructure.Repositories.Product
             => await _dbContext.Categories
                 .ToListAsync();
 
-        public async Task<EcommerceShop.Domain.Entities.Product.Category?> GetById(int id)
-            => await _dbContext.Categories
-                .Include(c => c.Products)
-                .FirstOrDefaultAsync(c => c.Id == id);
 
         public async Task<EcommerceShop.Domain.Entities.Product.Category?> GetByName(string name)
             => await _dbContext.Categories

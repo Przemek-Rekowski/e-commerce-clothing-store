@@ -1,9 +1,14 @@
-﻿using EcommerceShop.Application.Product.Dtos;
+﻿using Domain.Constants;
+using EcommerceShop.Application.Product.Dtos;
 using MediatR;
 
 namespace EcommerceShop.Application.Product.GetAllProducts
 {
-    public class GetAllProductsQuery : IRequest<IEnumerable<ProductDto>>
+    public class GetAllProductsQuery : IRequest<PagedResult<ProductDto>>
     {
+        public string? SearchPhrase { get; set; }
+        public int PageNumber { get; set; }
+        public int PageSize { get; set; }
+        public string? SortBy { get; set; }
     }
 }

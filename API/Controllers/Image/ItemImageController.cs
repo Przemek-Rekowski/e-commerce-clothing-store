@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers.Image
 {
-    [Route("api")]
+    [Route("api/item")]
     [ApiController]
 
     public class ItemImageController : ControllerBase
@@ -19,7 +19,7 @@ namespace API.Controllers.Image
         }
 
         [HttpPost]
-        [Route("item/image")]
+        [Route("image")]
         public async Task<IActionResult> Create([FromBody] CreateItemImageCommand command)
         {
             await _mediator.Send(command);
@@ -27,7 +27,7 @@ namespace API.Controllers.Image
         }
 
         [HttpGet]
-        [Route("item/{itemSku}/image")]
+        [Route("{itemSku}/image")]
         public async Task<IActionResult> GetByItem([FromRoute] string itemSku)
         {
             var dto = await _mediator.Send(new GetImagesByItemQuery(itemSku));
@@ -35,7 +35,7 @@ namespace API.Controllers.Image
         }
 
         [HttpDelete]
-        [Route("item/image/{id}/delete")]
+        [Route("image/{id}/delete")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var dto = await _mediator.Send(new DeleteItemImageCommand(id));
@@ -43,7 +43,7 @@ namespace API.Controllers.Image
         }
 
         [HttpDelete]
-        [Route("item/{itemSku}/image")]
+        [Route("{itemSku}/image")]
         public async Task<IActionResult> DeleteByItem([FromRoute] string itemSku)
         {
             var dto = await _mediator.Send(new DelateImageByItemCommand(itemSku));

@@ -1,9 +1,9 @@
-﻿using Domain.Interfaces.Product;
+﻿using Domain.Constants;
+using Domain.Interfaces.Product;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Globalization;
+using System.Linq.Expressions;
 
 namespace Infrastructure.Repositories.Product
 {
@@ -44,17 +44,6 @@ namespace Infrastructure.Repositories.Product
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<EcommerceShop.Domain.Entities.Product.Product>> GetByCategory(int categoryId)
-        {
-            return await _dbContext.Products
-                .Where(p => p.CategoryId == categoryId)
-                .Include(p => p.Category)
-                .Include(p => p.Items)
-                    .ThenInclude(i => i.Size)
-                .Include(p => p.Images)
-                .ToListAsync();
-        }
-
         public async Task<EcommerceShop.Domain.Entities.Product.Product?> GetById(int id)
         {
             return await _dbContext.Products
@@ -63,6 +52,46 @@ namespace Infrastructure.Repositories.Product
                     .ThenInclude(i => i.Size)
                 .Include(p => p.Images)
                 .FirstOrDefaultAsync(p => p.Id == id);
+        }
+
+        public async Task<(IEnumerable<EcommerceShop.Domain.Entities.Product.Product>, int)> GetAll(string? searchPhrase,
+        int pageSize,
+        int pageNumber)
+        {
+            var searchPhraseLower = searchPhrase?.ToLower();
+
+            var baseQuery = _dbContext.Products
+                .Where(r => searchPhraseLower == null || (r.Name.ToLower().Contains(searchPhraseLower)
+                                                       || r.Description.ToLower().Contains(searchPhraseLower)));
+
+            var totalCount = await baseQuery.CountAsync();
+
+            var products = await baseQuery
+                .Skip(pageSize * (pageNumber - 1))
+                .Take(pageSize)
+                .ToListAsync();
+
+            return (products, totalCount);
+        }
+
+        public async Task<PagedResult<EcommerceShop.Domain.Entities.Product.Product>> GetByCategory(string category, DatabaseQuery query)
+        {
+            var baseQuery = _dbContext.Products
+                .Include(p => p.Category)
+                .Include(p => p.Items)
+                    .ThenInclude(i => i.Size)
+                .Include(p => p.Images)
+                .Where(p => p.Category.Name == category && (query.SearchPhrase == null || p.Name.ToLower().Contains(query.SearchPhrase.ToLower()) || p.Description.ToLower().Contains(query.SearchPhrase.ToLower())));
+
+            var totalItemsCount = await baseQuery.CountAsync();
+
+            var products = await baseQuery
+                .Skip(query.PageSize * (query.PageNumber - 1))
+                .Take(query.PageSize)
+                .ToListAsync();
+
+            var result = new PagedResult<EcommerceShop.Domain.Entities.Product.Product>(products, totalItemsCount, query.PageSize, query.PageNumber);
+            return result;
         }
     }
 }
