@@ -9,7 +9,7 @@ namespace Domain.Interfaces.Product
         int pageSize,
         int pageNumber);
         Task<EcommerceShop.Domain.Entities.Product.Product?> GetById(int id);
-        Task<PagedResult<EcommerceShop.Domain.Entities.Product.Product>> GetByCategory(string category, DatabaseQuery query);
+        Task<IEnumerable<EcommerceShop.Domain.Entities.Product.Product>> GetByCategory(int categoryId);
         Task Delete(EcommerceShop.Domain.Entities.Product.Product product);
         Task Commit();
     }

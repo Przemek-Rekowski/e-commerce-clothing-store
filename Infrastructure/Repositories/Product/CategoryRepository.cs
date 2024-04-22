@@ -37,5 +37,9 @@ namespace Infrastructure.Repositories.Product
             => await _dbContext.Categories
                 .Include(c => c.Products)
                 .FirstOrDefaultAsync(c => c.Name == name);
+
+        public async Task<EcommerceShop.Domain.Entities.Product.Category?> GetById(int id)
+            => await _dbContext.Categories
+                .FirstOrDefaultAsync(c => c.Id == id);
     }
 }

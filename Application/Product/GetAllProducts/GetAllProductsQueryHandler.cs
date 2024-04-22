@@ -3,7 +3,6 @@ using Domain.Constants;
 using Domain.Interfaces.Product;
 using EcommerceShop.Application.Product.Dtos;
 using MediatR;
-using Microsoft.Extensions.Logging;
 
 namespace EcommerceShop.Application.Product.GetAllProducts
 {

@@ -9,6 +9,5 @@ namespace EcommerceShop.Application.Product.GetAllProducts
         public string? SearchPhrase { get; set; }
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
-        public string? SortBy { get; set; }
     }
 }

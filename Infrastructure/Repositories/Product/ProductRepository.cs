@@ -74,24 +74,15 @@ namespace Infrastructure.Repositories.Product
             return (products, totalCount);
         }
 
-        public async Task<PagedResult<EcommerceShop.Domain.Entities.Product.Product>> GetByCategory(string category, DatabaseQuery query)
+               public async Task<IEnumerable<EcommerceShop.Domain.Entities.Product.Product>> GetByCategory(int categoryId)
         {
-            var baseQuery = _dbContext.Products
+            return await _dbContext.Products
+                .Where(p => p.CategoryId == categoryId)
                 .Include(p => p.Category)
                 .Include(p => p.Items)
                     .ThenInclude(i => i.Size)
                 .Include(p => p.Images)
-                .Where(p => p.Category.Name == category && (query.SearchPhrase == null || p.Name.ToLower().Contains(query.SearchPhrase.ToLower()) || p.Description.ToLower().Contains(query.SearchPhrase.ToLower())));
-
-            var totalItemsCount = await baseQuery.CountAsync();
-
-            var products = await baseQuery
-                .Skip(query.PageSize * (query.PageNumber - 1))
-                .Take(query.PageSize)
                 .ToListAsync();
-
-            var result = new PagedResult<EcommerceShop.Domain.Entities.Product.Product>(products, totalItemsCount, query.PageSize, query.PageNumber);
-            return result;
         }
     }
 }

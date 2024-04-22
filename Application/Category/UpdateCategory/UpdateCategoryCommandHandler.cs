@@ -15,7 +15,7 @@ namespace Category.Application.Category.Commands.UpdateCategory
 
         public async Task<Unit> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
         {
-            var category = await _repository.GetById(request.Id);
+           var category = await _repository.GetById(request.Id);
 
             if(category != null)
             {
@@ -24,7 +24,7 @@ namespace Category.Application.Category.Commands.UpdateCategory
 
                 await _repository.Commit();
             }
-
+      
             return Unit.Value;
         }
     }
