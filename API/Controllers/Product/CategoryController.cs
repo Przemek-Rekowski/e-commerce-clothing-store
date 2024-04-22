@@ -7,7 +7,7 @@ using EcommerceShop.Application.Category.GetAllCategories;
 
 namespace API.Controllers.Product
 {
-    [Route("api")]
+    [Route("api/category")]
     [ApiController]
 
     public class CategoryController : ControllerBase
@@ -20,7 +20,6 @@ namespace API.Controllers.Product
         }
 
         [HttpPost]
-        [Route("category")]
         public async Task<IActionResult> Create([FromBody] CreateCategoryCommand command)
         {
             await _mediator.Send(command);
@@ -28,7 +27,6 @@ namespace API.Controllers.Product
         }
 
         [HttpGet]
-        [Route("category")]
         public async Task<IActionResult> GetAll()
         {
             var categories = await _mediator.Send(new GetAllCategoriesQuery());
@@ -36,7 +34,7 @@ namespace API.Controllers.Product
         }
 
         [HttpPost]
-        [Route("category/{id}/edit")]
+        [Route("edit/{id}")]
         public async Task<IActionResult> Update([FromBody] UpdateCategoryCommand command, [FromRoute] int id)
         {
             command.Id = id;
@@ -45,7 +43,7 @@ namespace API.Controllers.Product
         }
 
         [HttpDelete]
-        [Route("category/{id}/delete")]
+        [Route("delete/{id}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var dto = await _mediator.Send(new DeleteCategoryCommand(id));

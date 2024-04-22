@@ -1,28 +1,23 @@
 ﻿using AutoMapper;
+using Domain.Constants;
 using Domain.Interfaces.Product;
 using EcommerceShop.Application.Product.Dtos;
 using MediatR;
 
 namespace EcommerceShop.Application.Product.GetAllProducts
 {
-    public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQuery, IEnumerable<ProductDto>>
+    public class GetAllProductsQueryHandler(IMapper mapper,
+        IProductRepository productRepository) : IRequestHandler<GetAllProductsQuery, PagedResult<ProductDto>>
     {
-        private readonly IProductRepository _productRepository;
-        private readonly IMapper _mapper;
-
-        public GetAllProductsQueryHandler(IProductRepository productRepository, IMapper mapper)
+        public async Task<PagedResult<ProductDto>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
-            _productRepository = productRepository;
-            _mapper = mapper;
-        }
+            var (products, totalCount) = await productRepository.GetAll(request.SearchPhrase,
+                request.PageSize,
+                request.PageNumber);
+            var productDtos = mapper.Map<IEnumerable<ProductDto>>(products);
 
-        public async Task<IEnumerable<ProductDto>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
-        {
-            var products = await _productRepository.GetAll();
-            var dtos = _mapper.Map<IEnumerable<ProductDto>>(products);
-
-
-            return dtos;
+            var result = new PagedResult<ProductDto>(productDtos, totalCount, request.PageSize, request.PageNumber);
+            return result;
         }
     }
 }

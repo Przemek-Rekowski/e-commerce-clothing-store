@@ -5,6 +5,7 @@ using EcommerceShop.Application.Product.GetProductByCategory;
 using EcommerceShop.Application.Product.GetProductsById;
 using EcommerceShop.Application.Product.UpdateProduct;
 using MediatR;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers.Product
@@ -29,10 +30,10 @@ namespace API.Controllers.Product
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] GetAllProductsQuery query)
         {
-            var products = await _mediator.Send(new GetAllProductsQuery());
-            return Ok(products);
+            var restaurants = await _mediator.Send(query);
+            return Ok(restaurants);
         }
 
         [HttpGet]

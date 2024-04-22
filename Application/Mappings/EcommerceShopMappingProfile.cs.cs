@@ -15,6 +15,7 @@ namespace EcommerceShop.Application.Mappings
         public EcommerceShopMappingProfile()
         {
             CreateMap<Domain.Entities.Product.Product, ProductDto>()
+                .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Images.FirstOrDefault()))
                 .ForMember(dest => dest.SizeDtos, opt => opt.MapFrom(src => src.Items
                     .GroupBy(item => item.Size.Value)
                     .Select(group => new SizeDto
