@@ -61,6 +61,10 @@ namespace Infrastructure.Repositories.Product
             var searchPhraseLower = searchPhrase?.ToLower();
 
             var baseQuery = _dbContext.Products
+                .Include(p => p.Category)
+                .Include(p => p.Items)
+                    .ThenInclude(i => i.Size)
+                .Include(p => p.Images)
                 .Where(r => searchPhraseLower == null || (r.Name.ToLower().Contains(searchPhraseLower)
                                                        || r.Description.ToLower().Contains(searchPhraseLower)));
 
@@ -74,15 +78,27 @@ namespace Infrastructure.Repositories.Product
             return (products, totalCount);
         }
 
-               public async Task<IEnumerable<EcommerceShop.Domain.Entities.Product.Product>> GetByCategory(int categoryId)
+        public async Task<(IEnumerable<EcommerceShop.Domain.Entities.Product.Product>, int)> GetByCategory(string categoryName, string? searchPhrase, int pageSize, int pageNumber)
         {
-            return await _dbContext.Products
-                .Where(p => p.CategoryId == categoryId)
+            var searchPhraseLower = searchPhrase?.ToLower();
+
+            var baseQuery = _dbContext.Products
                 .Include(p => p.Category)
                 .Include(p => p.Items)
                     .ThenInclude(i => i.Size)
                 .Include(p => p.Images)
+                .Where(p => p.Category.Name == categoryName)
+                .Where(r => searchPhraseLower == null || (r.Name.ToLower().Contains(searchPhraseLower)
+                                                       || r.Description.ToLower().Contains(searchPhraseLower)));
+
+            var totalCount = await baseQuery.CountAsync();
+
+            var products = await baseQuery
+                .Skip(pageSize * (pageNumber - 1))
+                .Take(pageSize)
                 .ToListAsync();
+
+            return (products, totalCount);
         }
     }
 }

@@ -1,15 +1,18 @@
-﻿using EcommerceShop.Application.Product.Dtos;
+﻿using Domain.Constants;
+using EcommerceShop.Application.Product.Dtos;
 using MediatR;
 
 namespace EcommerceShop.Application.Product.GetProductByCategory
 {
-    public class GetProductByCategoryQuery : IRequest<ProductDto>
+    public class GetProductByCategoryQuery : IRequest<PagedResult<ProductDto>>
     {
-        public int CategoryId { get; set; }
-
-        public GetProductByCategoryQuery(int categoryId)
+        public GetProductByCategoryQuery(string categoryName)
         {
-            CategoryId = categoryId;
+            CategoryName = categoryName;
         }
+        public string CategoryName { get; set; } = default!;
+        public string? SearchPhrase { get; set; }
+        public int PageNumber { get; set; }
+        public int PageSize { get; set; }
     }
 }

@@ -32,8 +32,8 @@ namespace API.Controllers.Product
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] GetAllProductsQuery query)
         {
-            var restaurants = await _mediator.Send(query);
-            return Ok(restaurants);
+            var products = await _mediator.Send(query);
+            return Ok(products);
         }
 
         [HttpGet]
@@ -45,12 +45,15 @@ namespace API.Controllers.Product
         }
 
         [HttpGet]
-        [Route("product/category/{id}")]
-        public async Task<IActionResult> GetByCategory([FromRoute] int categoryId)
+        [Route("product/category/{categoryName}")]
+        public async Task<IActionResult> GetByCategory([FromRoute] string categoryName, [FromBody] GetProductByCategoryQuery query)
         {
-            var dto = await _mediator.Send(new GetProductByCategoryQuery(categoryId));
-            return Ok(dto);
+            query.CategoryName = categoryName;
+
+            var products = await _mediator.Send(query);
+            return Ok(products);
         }
+
 
         [HttpPost]
         [Route("product/{id}/edit")]

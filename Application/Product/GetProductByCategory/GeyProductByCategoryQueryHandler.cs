@@ -1,27 +1,24 @@
 ﻿using AutoMapper;
+using Domain.Constants;
 using Domain.Interfaces.Product;
 using EcommerceShop.Application.Product.Dtos;
+using EcommerceShop.Application.Product.GetAllProducts;
 using MediatR;
 
 namespace EcommerceShop.Application.Product.GetProductByCategory
 {
-    public class GetProductByCategoryQueryHandler : IRequestHandler<GetProductByCategoryQuery, ProductDto>
+    public class GetProductByCategoryQueryHandler(IMapper mapper,
+     IProductRepository productRepository) : IRequestHandler<GetProductByCategoryQuery, PagedResult<ProductDto>>
     {
-        private readonly IProductRepository _productRepository;
-        private readonly IMapper _mapper;
-
-        public GetProductByCategoryQueryHandler(IProductRepository productRepository, IMapper mapper)
+        public async Task<PagedResult<ProductDto>> Handle(GetProductByCategoryQuery request, CancellationToken cancellationToken)
         {
-            _productRepository = productRepository;
-            _mapper = mapper;
-        }
-        public async Task<ProductDto> Handle(GetProductByCategoryQuery request, CancellationToken cancellationToken)
-        {
-            var product = await _productRepository.GetByCategory(request.CategoryId);
+            var (products, totalCount) = await productRepository.GetByCategory(request.CategoryName, request.SearchPhrase,
+                request.PageSize,
+                request.PageNumber);
+            var productDtos = mapper.Map<IEnumerable<ProductDto>>(products);
 
-            var dto = _mapper.Map<ProductDto>(product);
-
-            return dto;
+            var result = new PagedResult<ProductDto>(productDtos, totalCount, request.PageSize, request.PageNumber);
+            return result;
         }
     }
 }
