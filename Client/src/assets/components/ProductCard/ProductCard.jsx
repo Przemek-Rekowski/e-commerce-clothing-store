@@ -1,3 +1,4 @@
+// ProductCard.jsx
 import React from 'react';
 import './ProductCard.css';
 
@@ -6,27 +7,37 @@ const ProductCard = ({ product }) => {
     return <div>Loading...</div>;
   }
 
-  const { name, description, SizeDtos, Price } = product;
+  const { name, description, sizeDtos, price } = product;
 
   return (
-    <div className="product-card" style={{ width: '18rem' }}>
-      <img className="card-img-top" src="..." alt="Card image cap" />
-      <div className="card-body">
-        <h5 className="card-title">{name}</h5>
-        <p className="card-text">{description}</p>
-        <div className="size-list">
-          <h6>Sizes:</h6>
-          <ul>
-            {SizeDtos && Array.isArray(SizeDtos) && SizeDtos.map((size) => (
-              <li key={size.Value}>{size.Value}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="price">
-          <p>{Price}</p>
-        </div>
-      </div>
+<div class="card">
+  <div class="card-img">
+    <img src="..." alt="Product image" />
+  </div>
+  <div class="card-info">
+    <p class="text-title">{name}</p>
+    <p class="text-body">{description}</p>
+    <div class="size-list">
+      <h6>Sizes:</h6>
+      <ul>
+        {sizeDtos && Array.isArray(sizeDtos) && sizeDtos.map((size) => (
+          <li key={size.value}>
+            <img src={size.image} alt={size.value} /> {/* Assuming size has an image property */}
+          </li>
+        ))}
+      </ul>
     </div>
+  </div>
+  <div class="card-footer">
+    <span class="text-title">{price}</span>
+    <div class="card-button">
+      <svg class="svg-icon" viewBox="0 0 20 20">
+        {/* Your SVG paths here */}
+      </svg>
+    </div>
+  </div>
+</div>
+
   );
 };
 

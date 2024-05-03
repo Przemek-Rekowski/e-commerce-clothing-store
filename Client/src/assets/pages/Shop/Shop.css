@@ -1,0 +1,23 @@
+.shop-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+  
+  .product-card {
+    width: calc(33.33% - 20px);
+    margin-bottom: 20px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .product-card {
+      width: calc(50% - 20px);
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .product-card {
+      width: calc(100% - 20px);
+    }
+  }
+  
