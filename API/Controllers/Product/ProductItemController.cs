@@ -2,6 +2,7 @@
 using EcommerceShop.Application.Item.DeleteItem;
 using EcommerceShop.Application.Item.GetAllItems;
 using EcommerceShop.Application.Item.GetItemBySku;
+using EcommerceShop.Application.Product.GetAllProducts;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,9 +30,9 @@ namespace API.Controllers.Product
 
         [HttpGet]
         [Route("item")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] GetAllItemsQuery query)
         {
-            var items = await _mediator.Send(new GetAllItemsQuery());
+            var items = await _mediator.Send(query);
             return Ok(items);
         }
 

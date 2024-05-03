@@ -32,17 +32,28 @@ namespace Infrastructure.Repositories.Product
             await Commit();
         }
 
-        public async Task<IEnumerable<ProductItem>> GetAll()
+        public async Task<(IEnumerable<ProductItem>, int)> GetAll(string? searchPhrase, int pageSize, int pageNumber)
         {
-            return await _dbContext.ProductItems
+            var searchPhraseLower = searchPhrase?.ToLower();
+
+            var baseQuery = _dbContext.ProductItems
                 .Include(pi => pi.Product)
                     .ThenInclude(pi => pi.Category)
                 .Include(pi => pi.Size)
                 .Include(pi => pi.Color)
                 .Include(pi => pi.Images)
-                .ToListAsync();
-        }
+                .Where(pi => searchPhraseLower == null || (pi.Product.Name.ToLower().Contains(searchPhraseLower)
+                                                       || pi.Product.Description.ToLower().Contains(searchPhraseLower)));
 
+            var totalCount = await baseQuery.CountAsync();
+
+            var items = await baseQuery
+                .Skip(pageSize * (pageNumber - 1))
+                .Take(pageSize)
+                .ToListAsync();
+
+            return (items, totalCount);
+        }
 
         public async Task<ProductItem?> GetBySku(string sku)
         {

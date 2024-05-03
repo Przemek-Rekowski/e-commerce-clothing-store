@@ -18,6 +18,7 @@ namespace EcommerceShop.Application.Category.CreateCategory
         public async Task<Unit> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
             var category = _mapper.Map<Domain.Entities.Product.Category>(request);
+            category.Name.ToLower();
 
             await _categoryRepository.Create(category);
 
