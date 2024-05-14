@@ -6,10 +6,11 @@ function Shop() {
   return (
     <div className="shop-container">
       <h1>Shop</h1>
-      <PaginatedItems itemsPerPage={4} />
+      <div className="product-grid">
+        <PaginatedItems itemsPerPage={4} />
+      </div>
     </div>
   );
 }
 
 export default Shop;
-

@@ -1,37 +1,47 @@
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px;
+  margin-top: 20px;
+}
+
+.pagination-container {
+  position: relative;
+  min-height: 100vh;
+}
+
 .pagination {
-    justify-content: center;
-    list-style: none;
-    padding: 0;
-  }
-  
-  .page-item {
-    margin: 0 5px;
-  }
-  
-  .page-link {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    color: #333;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-  }
-  
-  .page-link:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .page-item.active .page-link {
-    background-color: #007bff;
-    color: #fff;
-    border-color: #007bff;
-  }
-  
-  .page-item.disabled .page-link {
-    pointer-events: none;
-    background-color: #ddd;
-    color: #999;
-    border-color: #ccc;
-  }
-  
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+}
+
+
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination li a {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  color: #000;
+  text-decoration: none;
+}
+
+.pagination li.active a {
+  background-color: #000;
+  color: #fff;
+}
+
+.pagination li a:hover {
+  background-color: #000;
+  color: #fff;
+}

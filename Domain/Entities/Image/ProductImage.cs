@@ -13,6 +13,6 @@ namespace Domain.Entities.Image
         public int ProductId { get; set; }
         public string ImageUrl { get; set; } = default!;
 
-        public virtual Product Product { get; set; } = default!;
+        public Product Product { get; set; } = default!;
     }
 }

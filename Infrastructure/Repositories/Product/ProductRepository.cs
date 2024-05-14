@@ -34,16 +34,6 @@ namespace Infrastructure.Repositories.Product
             await Commit();
         }
 
-        public async Task<IEnumerable<EcommerceShop.Domain.Entities.Product.Product>> GetAll()
-        {
-            return await _dbContext.Products
-                .Include(p => p.Category)
-                .Include(p => p.Items)
-                    .ThenInclude(i => i.Size)
-                .Include(p => p.Images)
-                .ToListAsync();
-        }
-
         public async Task<EcommerceShop.Domain.Entities.Product.Product?> GetById(int id)
         {
             return await _dbContext.Products
@@ -53,6 +43,7 @@ namespace Infrastructure.Repositories.Product
                 .Include(p => p.Images)
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
+
 
         public async Task<(IEnumerable<EcommerceShop.Domain.Entities.Product.Product>, int)> GetAll(string? searchPhrase,
         int pageSize,
@@ -86,7 +77,6 @@ namespace Infrastructure.Repositories.Product
                 .Include(p => p.Category)
                 .Include(p => p.Items)
                     .ThenInclude(i => i.Size)
-                .Include(p => p.Images)
                 .Where(p => p.Category.Name == categoryName)
                 .Where(r => searchPhraseLower == null || (r.Name.ToLower().Contains(searchPhraseLower)
                                                        || r.Description.ToLower().Contains(searchPhraseLower)));

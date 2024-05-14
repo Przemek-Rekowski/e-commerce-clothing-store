@@ -8,8 +8,10 @@ import About from './assets/pages/About/About.jsx'
 import Contact from './assets/pages/Contact/Contact.jsx'
 import Shop from './assets/pages/Shop/Shop.jsx'
 import Categories from './assets/pages/Categories/Categories.jsx';
+import Product from './assets/pages/Product/Product.jsx';
 
 function App() {
+  
   return (
     <div>
         <Router>
@@ -21,9 +23,10 @@ function App() {
               <Route path="/contact" element={Contact()} />
               <Route path="/api" element={Shop()} />
               <Route path="/api/category" element={Categories()} />
+              <Route path="/api/product/:id" element={<Product/>} />
             </Routes>
           </div>
-          <Footer/>
+
        </Router>
     </div>
   );
