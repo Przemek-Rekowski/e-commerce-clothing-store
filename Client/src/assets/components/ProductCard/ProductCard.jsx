@@ -1,5 +1,5 @@
-// ProductCard.jsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
@@ -7,37 +7,33 @@ const ProductCard = ({ product }) => {
     return <div>Loading...</div>;
   }
 
-  const { name, description, sizeDtos, price } = product;
+  const { name, description, price, images } = product;
 
   return (
-<div class="card">
-  <div class="card-img">
-    <img src="..." alt="Product image" />
-  </div>
-  <div class="card-info">
-    <p class="text-title">{name}</p>
-    <p class="text-body">{description}</p>
-    <div class="size-list">
-      <h6>Sizes:</h6>
-      <ul>
-        {sizeDtos && Array.isArray(sizeDtos) && sizeDtos.map((size) => (
-          <li key={size.value}>
-            <img src={size.image} alt={size.value} /> {/* Assuming size has an image property */}
-          </li>
-        ))}
-      </ul>
-    </div>
-  </div>
-  <div class="card-footer">
-    <span class="text-title">{price}</span>
-    <div class="card-button">
-      <svg class="svg-icon" viewBox="0 0 20 20">
-        {/* Your SVG paths here */}
-      </svg>
-    </div>
-  </div>
-</div>
+    <div className="product">
+      <div className="product-images">
+        {images && images.length > 0 ? (
+          images.map((image, index) => (
+            <figure className="product-image" key={index}>
+              <img src={image.imageUrl} alt={`Product Image ${index + 1}`} />
+            </figure>
+          ))
+        ) : (
+          <figure className="product-image">
+            <img src="placeholder_image_url" alt="No Image Available" />
+          </figure>
+        )}
+      </div>
 
+      <div className="product-description">
+        <div className="info">
+          <h1>{name}</h1>
+          <p>{description}</p>
+        </div>
+        <div className="price">{price}</div>
+        <Link to={`product/${product.id}`} className="button">View Details</Link>
+      </div>
+    </div>
   );
 };
 

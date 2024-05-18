@@ -1,69 +1,81 @@
-.card {
-  width: 190px;
-  height: 254px;
-  padding: .8em;
-  background: #f5f5f5;
-  position: relative;
-  overflow: visible;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
- }
- 
- .card-img {
-  background-color: #ffcaa6;
-  height: 40%;
-  width: 100%;
-  border-radius: .5rem;
-  transition: .3s ease;
- }
- 
- .card-info {
-  padding-top: 10%;
- }
- 
- svg {
-  width: 20px;
-  height: 20px;
- }
- 
- .card-footer {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 10px;
-  border-top: 1px solid #ddd;
- }
- 
- /*Text*/
- .text-title {
-  font-weight: 900;
-  font-size: 1.2em;
-  line-height: 1.5;
- }
- 
- .text-body {
-  font-size: .9em;
-  padding-bottom: 10px;
- }
- 
- /*Button*/
- .card-button {
-  border: 1px solid #252525;
-  display: flex;
-  padding: .3em;
-  cursor: pointer;
-  border-radius: 50px;
-  transition: .3s ease-in-out;
- }
- 
- /*Hover*/
- .card-img:hover {
-  transform: translateY(-25%);
-  box-shadow: rgba(226, 196, 63, 0.25) 0px 13px 47px -5px, rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
- }
- 
- .card-button:hover {
-  border: 1px solid #ffcaa6;
-  background-color: #ffcaa6;
- }
- 
+:root {
+  --dark-blue: #31353d;
+  --green: #9bb6aa;
+  --body-color: #f9f9f9;
+  --header-color: var(--dark-blue);
+  --base-font-family: 'MavenProRegular', arial, tahoma, trebuchet ms, verdana;
+  --base-font-size: 14px;
+}
+
+/* Globals */
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Titles */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+  color: var(--dark-blue);
+  margin: 0;
+}
+
+/* Lists */
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+/* Defaults */
+abbr {
+  cursor: help;
+}
+
+body {
+  background: var(--body-color);
+  color: #aaa;
+  font-size: var(--base-font-size);
+  font-family: var(--base-font-family);
+}
+
+img {
+  max-width: 100%;
+}
+
+.product {
+  background: #fff;
+  max-width: 300px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+}
+
+.product h1 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.product p {
+  margin-bottom: 15px;
+}
+
+.product .price {
+  color: var(--green);
+  font-size: 1.5em;
+}
+
+.product .price::before {
+  content: '$';
+}
+
+.product .image {
+  margin-bottom: 15px;
+}
+
+.product .image img {
+  max-width: 100%;
+  height: auto;
+}

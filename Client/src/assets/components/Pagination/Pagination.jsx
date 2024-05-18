@@ -1,34 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
 import ReactPaginate from 'react-paginate';
-import axios from 'axios'; // Import axios for making API requests
+import axios from 'axios';
+import ProductCard from "../ProductCard/ProductCard.jsx";
+import './Pagination.css';
 
-function Items({ currentItems }) {
-  return (
-    <>
-      {currentItems &&
-        currentItems.map((item) => (
-          <div key={item.id}>
-            <h3>Item #{item.id}</h3> {/* Assuming item has an id */}
-            {/* Render other item details here */}
-          </div>
-        ))}
-    </>
-  );
-}
-
-export default function PaginatedItems({ itemsPerPage }) {
+export default function PaginatedItems({ itemsPerPage, category }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [productsData, setProductsData] = useState([]);
 
   useEffect(() => {
     fetchData();
-  }, [currentPage]); // Fetch data when currentPage changes
+  }, [currentPage, category, itemsPerPage]);
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`https://localhost:7172/api?PageNumber=${currentPage}&PageSize=${itemsPerPage}`);
+      let url = `https://localhost:7172/api?PageNumber=${currentPage}&PageSize=${itemsPerPage}`;
+      if (category) {
+        url = `https://localhost:7172/api/product/category/${category}?PageNumber=${currentPage}&PageSize=${itemsPerPage}`;
+      }
+      const response = await axios.get(url);
       setProductsData(response.data.items);
       setTotalPages(response.data.totalPages);
     } catch (error) {
@@ -37,13 +28,17 @@ export default function PaginatedItems({ itemsPerPage }) {
   };
 
   const handlePageClick = (data) => {
-    const selectedPage = data.selected + 1; // Pagination starts from 0
+    const selectedPage = data.selected + 1;
     setCurrentPage(selectedPage);
   };
 
   return (
     <>
-      <Items currentItems={productsData} />
+      <div className="products-container">
+        {productsData.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
       <ReactPaginate
         breakLabel="..."
         nextLabel="next >"
@@ -52,6 +47,8 @@ export default function PaginatedItems({ itemsPerPage }) {
         pageCount={totalPages}
         previousLabel="< previous"
         renderOnZeroPageCount={null}
+        containerClassName="pagination"
+        activeClassName="active"
       />
     </>
   );

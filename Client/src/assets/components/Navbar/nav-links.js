@@ -2,11 +2,11 @@ const links = [
 
     {
         name: 'Shop',
-        route: '/api'
+        route: '/shop'
     },
     {
         name: 'Categories',
-        route: '/api/category'
+        route: '/shop/category'
     },
     {
         name: 'About',

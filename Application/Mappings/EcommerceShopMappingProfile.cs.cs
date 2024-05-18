@@ -15,13 +15,19 @@ namespace EcommerceShop.Application.Mappings
         public EcommerceShopMappingProfile()
         {
             CreateMap<Domain.Entities.Product.Product, ProductDto>()
-                .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Images.FirstOrDefault()))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.SizeDtos, opt => opt.MapFrom(src => src.Items
                     .GroupBy(item => item.Size.Value)
                     .Select(group => new SizeDto
                     {
                         Value = group.Key,
                         IsAvalible = group.Any(item => item.Quantity > 0)
+                    }).ToList()))
+                 .ForMember(dest => dest.Images, opt => opt.MapFrom(src => src.Images
+                    .GroupBy(item => item.ImageUrl)
+                    .Select(group => new ProductImageDto
+                    {
+                        ImageUrl = group.Key,
                     }).ToList()
                 ))
                 .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Category.Name))
@@ -31,6 +37,7 @@ namespace EcommerceShop.Application.Mappings
 
 
             CreateMap<CreateProductDto, Domain.Entities.Product.Product>();
+            CreateMap<UpdateProductDto, Domain.Entities.Product.Product>();
 
             CreateMap<CreateProductImageDto, ProductImage>();
             CreateMap<ProductImage, ProductImageDto>();
