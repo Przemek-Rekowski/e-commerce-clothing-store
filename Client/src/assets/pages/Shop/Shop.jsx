@@ -1,6 +1,6 @@
 import React from 'react';
 import PaginatedItems from '../../../assets/components/Pagination/Pagination.jsx';
-import './Shop.css'; // Import your CSS file if needed
+import './Shop.css';
 
 function Shop() {
   return (

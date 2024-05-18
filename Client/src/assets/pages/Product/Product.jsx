@@ -6,15 +6,14 @@ function Product() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedSize, setSelectedSize] = useState(null);
   const [product, setProduct] = useState(null);
-  const { id } = useParams(); // Extracting ID from URL
+  const { id } = useParams();
 
   useEffect(() => {
-    // Fetching product based on ID from URL
     fetch(`https://localhost:7172/api/product/${id}`)
       .then(response => response.json())
       .then(data => setProduct(data))
       .catch(error => console.error('Error fetching product:', error));
-  }, [id]); // Dependency on ID
+  }, [id]);
 
   const nextImage = () => {
     setCurrentImageIndex(prevIndex => (prevIndex === product.images.length - 1 ? 0 : prevIndex + 1));

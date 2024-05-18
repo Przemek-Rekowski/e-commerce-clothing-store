@@ -46,13 +46,19 @@ namespace API.Controllers.Product
 
         [HttpGet]
         [Route("product/category/{categoryName}")]
-        public async Task<IActionResult> GetByCategory([FromRoute] string categoryName, [FromBody] GetProductByCategoryQuery query)
+        public async Task<IActionResult> GetByCategory([FromRoute] string categoryName, [FromQuery] int PageNumber, [FromQuery] int PageSize, [FromQuery] string? SearchPhrase)
         {
-            query.CategoryName = categoryName;
+            var query = new GetProductByCategoryQuery(categoryName)
+            {
+                PageNumber = PageNumber,
+                PageSize = PageSize,
+                SearchPhrase = SearchPhrase
+            };
 
             var products = await _mediator.Send(query);
             return Ok(products);
         }
+
 
 
         [HttpPost]
