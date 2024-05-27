@@ -9,6 +9,7 @@ using Domain.Interfaces.Product;
 using Domain.Interfaces.Cart;
 using Domain.Interfaces.Image;
 using Infrastructure.Repositories.Image;
+using Microsoft.AspNetCore.Identity;
 
 
 namespace EcommerceShop.Infrastructure.Extensions
@@ -22,6 +23,7 @@ namespace EcommerceShop.Infrastructure.Extensions
                 options.UseSqlServer(connectionString));
 
             services.AddIdentityApiEndpoints<User>()
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<EcommerceShopDbContext>();
 
             services.AddScoped<IProductRepository, ProductRepository>();

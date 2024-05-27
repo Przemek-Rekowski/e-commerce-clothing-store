@@ -26,7 +26,6 @@ function App() {
             <Route path="/product/:id" element={<Product />} />
           </Routes>
         </div>
-        <Footer />
       </Router>
     </div>
   );
