@@ -27,43 +27,43 @@ function DesktopNavbar() {
             </nav>
             <ul className='desktop-menu-btns'>
                 <li><HiSearch style={reactIconStyle} /></li>
-                <li>Sign in</li>
-                <li><p>Log In</p></li>
+                <li><Link to="/signin">Sign in</Link></li>
+                <li><Link to="/login">Log In</Link></li>
             </ul>
         </div>
     );
 }
 
-function MobileNavbar({isOpen, setIsOpen}) {
-    return(
+function MobileNavbar({ isOpen, setIsOpen }) {
+    return (
         <>
             <nav className='nav-mobile'>
-                    {isOpen ? <HiX onClick={() => setIsOpen(!isOpen)} style={reactIconStyle}/> : <HiMenu onClick={() => setIsOpen(!isOpen)} style={reactIconStyle}/>}
-                    <div className='logo-container'>
+                {isOpen ? <HiX onClick={() => setIsOpen(!isOpen)} style={reactIconStyle} /> : <HiMenu onClick={() => setIsOpen(!isOpen)} style={reactIconStyle} />}
+                <div className='logo-container'>
                     {/* Wrap logo with Link component */}
                     <Link to="/">
                         <img src={logo} alt="Logo" className='logo' />
                     </Link>
-                    </div>
-                    <ul className='desktop-menu-btns'>
-                        <li><HiSearch style={reactIconStyle} /></li>
-                        <li>Sign in</li>
-                        <li><p>Log In</p></li>
-                    </ul>
+                </div>
+                <ul className='desktop-menu-btns'>
+                    <li><HiSearch style={reactIconStyle} /></li>
+                    <li><Link to="/signin">Sign in</Link></li>
+                    <li><Link to="/login"><p>Log In</p></Link></li>
+                </ul>
             </nav>
             {isOpen ? (
                 <div className='mobile-menu'>
                     <form>
-                        <HiSearch style={reactIconStyle}/>
+                        <HiSearch style={reactIconStyle} />
                         <input placeholder='Search' />
                     </form>
-                    
+
                     <ul>
                         {links.map(link => {
-                            return  <li key={link.name}>
-                                        <a href={link.route}>{link.name}</a>
-                                        <HiChevronDown style={reactIconStyle}/>
-                                    </li>
+                            return <li key={link.name}>
+                                <a href={link.route}>{link.name}</a>
+                                <HiChevronDown style={reactIconStyle} />
+                            </li>
                         })}
                     </ul>
                 </div>
@@ -77,12 +77,12 @@ function MobileNavbar({isOpen, setIsOpen}) {
 export default function Navbar() {
     const notMobile = useMediaQuery({
         query: '(min-width: 1064px)'
-      })
-     
-    const [isOpen, setIsOpen] = useState(false)  
-    return(
+    })
+
+    const [isOpen, setIsOpen] = useState(false)
+    return (
         <header>
-                {notMobile ? <DesktopNavbar /> : <MobileNavbar isOpen={isOpen} setIsOpen={setIsOpen} />}
+            {notMobile ? <DesktopNavbar /> : <MobileNavbar isOpen={isOpen} setIsOpen={setIsOpen} />}
         </header>
     )
 }
