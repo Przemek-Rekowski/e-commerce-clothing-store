@@ -31,11 +31,10 @@ namespace Application.Users
                 return null;
             }
 
-            var userId = user.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)!.Value;
+            var id = user.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)!.Value;
             var email = user.FindFirst(c => c.Type == ClaimTypes.Email)!.Value;
-
-
-            return new CurrentUser(userId, email);
+            var roles = user.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value);
+            return new CurrentUser(id, email, roles);
         }
     }
 }

@@ -9,6 +9,7 @@ import Shop from './assets/pages/Shop/Shop.jsx';
 import ShopByCategory from './assets/pages/ShopByCategory/ShopByCategory.jsx';
 import Categories from './assets/pages/Categories/Categories.jsx';
 import Product from './assets/pages/Product/Product.jsx';
+import LogIn from './assets/pages/LogIn/LogIn.jsx'
 
 function App() {
   return (
@@ -24,9 +25,10 @@ function App() {
             <Route path="/shop/category/:categoryName" element={<ShopByCategory />} />
             <Route path="/shop/category" element={<Categories />} />
             <Route path="/product/:id" element={<Product />} />
+
+            <Route path="/login" element={<LogIn/>} />
           </Routes>
         </div>
-        <Footer />
       </Router>
     </div>
   );

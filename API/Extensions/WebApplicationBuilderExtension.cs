@@ -28,6 +28,7 @@ namespace API.Extensions
 
             });
             });
+            builder.Services.AddEndpointsApiExplorer();
         }
     }
 }
